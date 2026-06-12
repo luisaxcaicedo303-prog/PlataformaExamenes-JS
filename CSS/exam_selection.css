@@ -1,0 +1,101 @@
+:root{
+    --st-color: #000022;
+    --nd-color: #f1fffa;
+    --rd-color: #007fff;
+    --fourth-color: #5aa9e6;
+    --fifth-color: #6f686d;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    height: 30vh;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+    background-color: var(--st-color);
+}
+
+.header-1{
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header-1-logo{
+    background-image: url(/assets/ChatGPT\ Image\ 12\ jun\ 2026\,\ 03_25_19\ p.m..png);
+    background-position: center;
+    background-size: cover;
+    background-repeat:no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+a{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ti-clipboard-check{
+    background-color: var(--rd-color);
+    color: var(--nd-color);
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+}
+
+.header-1-titulo{
+    color: var(--nd-color);
+    font-size: 1rem;
+}
+
+.header-2{
+    padding: 0.5rem;
+}
+
+.header-2-sttitle{
+    color: var(--rd-color)
+}
+
+.header-2-ndtitle{
+    color: var(--nd-color);
+}
+
+.titulo-icono{
+    display: flex;
+}
+
+.header-2-rdtitle{
+    color: var(--fifth-color);
+    margin: 0;
+}
+
+.header-2-ndtitle{
+    font-size: 1.4rem;
+}
+
+strong{
+    color: var(--rd-color);
+}
+
+.ti-info-circle{
+    color: var(--rd-color);
+}
+
+.header-2-rdtitle{
+    font-size: 0.8rem;
+}
+
+/*////////////////////////////////////////////////////////////////////////   MAIN   /////////////////////////////////////////////////////////////////////*/
+
+.titulo main{
+    color: var(--fifth-color);
+}
