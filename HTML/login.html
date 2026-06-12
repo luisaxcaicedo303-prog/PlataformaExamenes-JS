@@ -1,65 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AcmeExam - Iniciar Sesión</title>
-   <link rel="stylesheet" href="../CSS/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/login.css">
 </head>
-
-
 <body>
 
     <header>
-
-        <div class="container">
-            <h1>AcmeExam</h1>
-
-            <nav>
-                <ul>
-                    <li><a href="#">Resolver Examen</a></li>
-                    <li><a href="#">Login</a></li>
-                </ul>
-
-            </nav>
-
-        </div>
-
+        <div class="logo"><h1>AcmeExam</h1></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-btn">Resolver Examen</a></li>
+                <li><a href="#" class="nav-btn">Login</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
+    <main class="main-container">
 
         <section class="presentacion">
 
-            <div class="hero">
-
-                <h2>PLATAFORMA DE EVALUACIÓN</h2>
-                <h1>Crea y resuelve exámenes con total control.</h1>
-                <p>Gestiona usuarios, asigna evaluaciones y revisa resultados en tiempo real desde un solo lugar.</p>
-
-            </div>
-
+            <h2>PLATAFORMA DE EVALUACIÓN</h2>
+            <h1>Crea y resuelve exámenes con total control.</h1>
+            <p>Gestiona usuarios, asigna evaluaciones y revisa resultados en tiempo real desde un solo lugar.</p>
         </section>
 
         <section class="login-form">
 
             <h2>Iniciar sesión</h2>
             <p>Accede con tu cuenta autorizada</p>
-            
+
             <form action="login.php" method="POST">
+
                 <label for="username">CORREO ELECTRÓNICO</label>
-                <input type="email" id="username" name="username" placeholder="nombre@institucion.edu" required>
+                <input type="email" id="username" placeholder="nombre@institucion.edu">
 
                 <label for="password">CONTRASEÑA</label>
-                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                <input type="password" id="password" placeholder="••••••••">
 
-                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-                
                 <button type="submit">Entrar</button>
+
             </form>
 
-            <p class="signup-link">¿Sin cuenta aún? Solicita acceso a tu <strong>docente o administrador</strong>.</p>
+            <p class="footer-text">¿Sin cuenta aún? Solicita acceso a tu <strong>docente o administrador</strong>.</p>
 
         </section>
 

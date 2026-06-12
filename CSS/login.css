@@ -1,34 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
 
 header {
-    background-color: #ffffff; 
-    padding: 1rem 5%;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    padding: 30px 50px;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    color: #007bff;
+    font-size: 1.8rem;
+    font-weight: 900;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
     list-style: none;
-    margin: 0 auto; 
+    gap: 20px;
 }
 
-.login-form {
+.nav-btn {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    padding: 10px 25px;
+    background: white;
+    /* Cambio: Borde más sutil al principio */
+    border-radius: 8px; 
+    transition: all 0.4s ease;
+}
+
+.nav-btn:hover {
+    /* Cambio: Al pasar el mouse, se vuelve redondeado/circular y gana sombra */
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+
+.presentacion {
+    flex: 1;
+    background-color: #0a192f;
+    color: white;
     padding: 80px;
     display: flex;
     flex-direction: column;
-    gap: 15px; 
+    justify-content: center;
 }
 
-.login-form h2 { margin-bottom: 10px; }
+.presentacion h2 {
+    color: #007bff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
 
+.presentacion h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+.login-form {
+    flex: 1;
+    padding: 80px;
+    background-color: #f9fdfc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+label {
+    font-weight: 900;
+    color: #333;
+    font-size: 0.85rem;
+}
 
 input {
-    width: 100%;
-    padding: 15px;
-    margin: 8px 0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    padding: 18px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.footer-text {
+    margin-top: 50px;
+    color: #666;
+    font-size: 0.9rem;
 }
