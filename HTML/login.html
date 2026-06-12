@@ -14,7 +14,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#" class="nav-btn">Resolver Examen</a></li>
-                <li><a href="#" class="nav-btn">Login</a></li>
+            
             </ul>
         </nav>
     </header>
@@ -26,6 +26,14 @@
             <h2>PLATAFORMA DE EVALUACIÓN</h2>
             <h1>Crea y resuelve exámenes con total control.</h1>
             <p>Gestiona usuarios, asigna evaluaciones y revisa resultados en tiempo real desde un solo lugar.</p>
+
+            <div class="card-resolver-clean">
+
+                <img src="estudiante.jpeg" alt="Resolver Examen" class="card-img">
+                    <button class="btn-resolver">RESOLVER EXAMEN<span class="icon">📝</span>
+                    </button>
+            </div>
+
         </section>
 
         <section class="login-form">
@@ -33,7 +41,7 @@
             <h2>Iniciar sesión</h2>
             <p>Accede con tu cuenta autorizada</p>
 
-            <form action="login.php" method="POST">
+            <form id= "iniciar-Sesion">
 
                 <label for="username">CORREO ELECTRÓNICO</label>
                 <input type="email" id="username" placeholder="admin@acme.edu">
@@ -45,8 +53,7 @@
 
             </form>
 
-            <p class="footer-text">¿Sin cuenta aún? Solicita acceso a tu <strong>docente o administrador</strong>.</p>
-
+            <p class="footer-text">¿Sin cuenta aún? crea tu cuenta. <strong><a href="#" class="registro">Registrarse</a></strong>.</p>
         </section>
 
     </main>
