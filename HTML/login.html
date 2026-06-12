@@ -1,56 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcmeExam-login</title>
+    <title>AcmeExam - Iniciar Sesión</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
     <header>
+
         <div class="container">
             <h1>AcmeExam</h1>
+
             <nav>
                 <ul>
                     <li><a href="#">Resolver Examen</a></li>
                     <li><a href="#">Login</a></li>
                 </ul>
-            </nav>
-        </div>
-         </header>
 
-        <main> 
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main>
 
         <section class="presentacion">
 
-        <div class="hero">
+            <div class="hero">
 
-            <h2> PLATAFORMA DE EVALUACIÓN | MODULO PRIVADO </h2>
-            <h1> Gestiona usuarios, Crea y resuelve examenes
-             con total control. </h1>
-             <P> Ingresa para administrar el banco de examenes de AcmeExam. Los estudiantes pueden resolver pruebas desde el modulo público </P>
+                <h2>PLATAFORMA DE EVALUACIÓN</h2>
+                <h1>Crea y resuelve exámenes con total control.</h1>
+                <p>Gestiona usuarios, asigna evaluaciones y revisa resultados en tiempo real desde un solo lugar.</p>
 
-        </div>
-
-        <div class="login-form">
-            <h2>Iniciar Sesión</h2>
-            <form action="login.php" method="POST">
-                <label for="username">Email:</label>
-                <input type="email" id="username" name="username" required>
-
-                <label for="password">Contraseña:</label>
-
-                <input type="password" id="password" name="password" required>
-
-                <h2> Usuario demo: admin@acmee.edu / Admin123 </h2>
-                <button type="submit">Entrar</button>
-            </form>
+            </div>
 
         </section>
 
-        </main>
-   
+        <section class="login-form">
+
+            <h2>Iniciar sesión</h2>
+            <p>Accede con tu cuenta autorizada</p>
+            
+            <form action="login.php" method="POST">
+                <label for="username">CORREO ELECTRÓNICO</label>
+                <input type="email" id="username" name="username" placeholder="nombre@institucion.edu" required>
+
+                <label for="password">CONTRASEÑA</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+
+                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                
+                <button type="submit">Entrar</button>
+            </form>
+
+            <p class="signup-link">¿Sin cuenta aún? Solicita acceso a tu <strong>docente o administrador</strong>.</p>
+
+        </section>
+        
+    </main>
     
 </body>
 </html>
