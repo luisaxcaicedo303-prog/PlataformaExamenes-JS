@@ -164,6 +164,10 @@ input {
         overflow-y: auto;
     }
     .presentacion {
-        display: none;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .presentacion h1 {
+        font-size: 2.5rem;
     }
 }
