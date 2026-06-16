@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AcmeExam | Gestión de exámenes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/admin-users.css">
 </head>
+
 <body>
-    
+    <div class="app">
+        <aside class="sidebar">
+            <a href="./admin-exams.html" class="sidebar_logo" title="Ir a gestión de exámenes">
+                <span class="logo_icon">A</span>
+            </a>
+
+            <nav class="sidebar_nav">
+                <a href="./admin-exams.html" class="sidebar_link active" title="Gestión de exámenes">
+                    📝
+                </a>
+
+                <a href="./admin-users.html" class="sidebar_link" title="Usuarios">
+                    👥
+                </a>
+
+                <a href="./admin-results.html" class="sidebar_link" title="Exámenes resueltos">
+                    📊
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <a href="./admin-exams.html" class="topbar_brand" title="Ir a gestión de exámenes">
+                    <img src="../Assets/images/logo.png" alt="AcmeExam" class="topbar_logo">
+                </a>
+
+                <input type="checkbox" id="menu-toggle" class="menu_toggle">
+
+                <label for="menu-toggle" class="hamburger_btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+
+                <button type="button" class="logout_desktop_btn logout_btn">
+                    Cerrar sesión
+                </button>
+
+                <nav class="mobile_menu">
+                    <a href="./admin-exams.html" class="active">Gestión de exámenes</a>
+                    <a href="./admin-users.html">Usuarios</a>
+                    <a href="./admin-results.html">Exámenes resueltos</a>
+
+                    <button type="button" class="logout_link logout_btn">
+                        Cerrar sesión
+                    </button>
+                </nav>
+
+            </header>
+            <section class="page">
+                <div class="page_header">
+                    <h1>Gestion de Usuarios</h1>
+                    <p>
+                        Modificar usuarios.
+                    </p>
+                </div>
+
+                <div class="dashboard">
+
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
+
 </html>
