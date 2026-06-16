@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "adding the data of the exams in json format"
+        "adding the data of the exams in json format",
+        "adding new html pages"
     ]
 }
