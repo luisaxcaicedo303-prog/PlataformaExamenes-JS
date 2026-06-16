@@ -80,7 +80,7 @@ body {
 
 .btn-resolver {
     width: 100%;
-    padding: 18px;
+    padding: 13px;
     background: white;
     color: var(--st-color);
     border: none;
@@ -124,7 +124,7 @@ label {
 }
 
 input {
-    padding: 24px;
+    padding: 13px;
     border: 2px solid var(--fourth-color);
     border-radius: 12px;
     font-size: 1.1rem;
@@ -132,7 +132,7 @@ input {
 }
 
 .btn-entrar {
-    padding: 22px;
+    padding: 15px;
     background: var(--rd-color);
     color: white;
     border: none;
