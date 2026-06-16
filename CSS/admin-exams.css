@@ -1,6 +1,4 @@
-/* =========================
-   VARIABLES - LIGHT MODE
-========================= */
+/* VARIABLES - LIGHT MODE  */
 
 :root {
     --st-color: #000022;
@@ -36,9 +34,7 @@
     --shadow-card: 0 16px 40px var(--shadow-color);
 }
 
-/* =========================
-   VARIABLES - DARK MODE
-========================= */
+/* VARIABLES - DARK MODE */
 
 body.dark_mode {
     --body-bg-color: #080b1f;
@@ -60,9 +56,7 @@ body.dark_mode {
     --focus-shadow-color: rgba(90, 169, 230, 0.22);
 }
 
-/* =========================
-   RESET
-========================= */
+/* RESET */
 
 * {
     margin: 0;
@@ -99,9 +93,7 @@ a {
     color: inherit;
 }
 
-/* =========================
-   APP LAYOUT
-========================= */
+/* APP LAYOUT */
 
 .app {
     min-height: 100vh;
@@ -113,17 +105,13 @@ a {
     flex: 1;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+/* SIDEBAR */
 
 .sidebar {
     display: none;
 }
 
-/* =========================
-   TOPBAR
-========================= */
+/* TOPBAR */
 
 .topbar {
     width: 100%;
@@ -194,7 +182,7 @@ a {
     transform: translateY(-0.5rem) rotate(-45deg);
 }
 
-/* Menú móvil */
+/* Menú móvil  */
 .mobile_menu {
     width: calc(100% - 2rem);
     position: absolute;
@@ -235,9 +223,7 @@ a {
     border-top: 1px solid var(--border-color);
 }
 
-/* =========================
-   PAGE
-========================= */
+/* PAGE */
 
 .page {
     padding: 1.25rem;
@@ -270,18 +256,14 @@ a {
     max-width: 42rem;
 }
 
-/* =========================
-   DASHBOARD
-========================= */
+/* DASHBOARD */
 
 .dashboard {
     display: grid;
     gap: 1.5rem;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .card {
     background: var(--card-bg-color);
@@ -328,9 +310,7 @@ a {
     font-weight: 700;
 }
 
-/* =========================
-   FORM
-========================= */
+/* FORM */
 
 .exam_form {
     padding: 1.25rem;
@@ -387,9 +367,7 @@ a {
     box-shadow: 0 0 0 4px var(--focus-shadow-color);
 }
 
-/* =========================
-   QUESTIONS
-========================= */
+/* QUESTIONS */
 
 .questions_header {
     margin: 1.5rem 0 1rem;
@@ -472,9 +450,7 @@ a {
     color: var(--text-muted-color);
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 .form_actions {
     margin-top: 1.5rem;
@@ -512,9 +488,7 @@ a {
     border: 1px solid var(--border-color);
 }
 
-/* =========================
-   TABLE
-========================= */
+/* TABLE */
 
 .search_box {
     padding: 1rem 1.25rem 0;
@@ -644,9 +618,7 @@ td small {
     color: var(--danger-color);
 }
 
-/* =========================
-   TABLET
-========================= */
+/* TABLET */
 
 @media (min-width: 768px) {
     .page {
@@ -706,9 +678,7 @@ td small {
     }
 }
 
-/* =========================
-   DESKTOP
-========================= */
+/* DESKTOP */
 
 @media (min-width: 1024px) {
     .app {
@@ -790,9 +760,7 @@ td small {
     }
 }
 
-/* =========================
-   LARGE DESKTOP
-========================= */
+/* LARGE DESKTOP */
 
 @media (min-width: 1280px) {
     .page {
