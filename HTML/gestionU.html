@@ -1,60 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcmeExam-Gestion usuario</title>
-    <link rel="stylesheet" href="gestionU.html">
+    <title>AcmeExam - Gestión de Usuarios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/gestionU.css">
 </head>
-
-
 <body>
-    
-    <header>
-        <div class="logo"><h1>AcmeExam</h1></div>
+
+    <header class="main-header">
+
+        <div class="header-logo">
+            <a href="login.html">
+                <img src="icono.png" alt="AcmeExam" class="logo-img">
+            </a>
+        </div>
+
         <nav>
             <ul class="nav-links">
-                <li><a href="#" class="nav-btn">Resolver Examen</a></li>
-                <li><a href="#" class="nav-btn">Usuarios</a></li>
-                <li><a href="#" class="nav-btn">Examenes</a></li>
+                <li><a href="login.html" class="nav-btn">Resolver Examen</a></li>
             </ul>
         </nav>
+
     </header>
 
-    <main>
-        <section class="container">
-            <div class= "tittle">  
+    <main class="container">
 
-                <h1>  Gestion de usuarios </h1>
-                <p> Crea, actualiza  y elimina cuentas con acceso a los modulos  privados </p>
+        <div class="title-section">
+            <h1>Gestión de usuarios</h1>
+            <p>Crea tu cuenta.</p>
+        </div>
 
-            </div>
+        <section class="formulario">
 
-            <div class="formulario">
+            
+            
+            <form id="registro-form">
 
-                <form id="registro-form">
+                <label for="identificacion">Número de identificación</label>
 
-                        <input type="text" id="identificacion" required>
-                        <input type="text" id="password"  required>
-                        <input type="text" id="username" placeholder="Usuario" required>
-                        <input type="password" id="password" placeholder="Contraseña" required>
-                        
-                        <button type="submit">Registrarse</button>
-                </form>
+                <input type="text" id="identificacion" placeholder="Ej. 1023456789" required>
+
+                <label for="username">Nombre completo</label>
+
+                <input type="text" id="username" placeholder="Ej. Laura Martínez" required>
+
+                <label for="email">Email</label>
+                
+                <input type="email" id="email" placeholder="correo@institucion.edu" required>
+
+                <label for="telefono">Teléfono</label>
+
+                <input type="text" id="telefono" placeholder="Ej. +57 300 000 0000" required>
 
 
-
-                </form>
-
-
-            </div>
-
-
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="********" required>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Crear usuario</button>
+                    <button type="reset" class="btn-secondary">Limpiar</button>
+                </div>
+            </form>
         </section>
     </main>
+
+</body>
+</html>
    
 
 
-    
-</body>
-</html>
+   
