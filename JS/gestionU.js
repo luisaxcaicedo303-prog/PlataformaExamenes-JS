@@ -25,16 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (form) {
         form.addEventListener('submit', (event) => {
-            
             event.preventDefault();
 
             let usuariosGuardados = localStorage.getItem(USERS_KEY);
-
-            if (usuariosGuardados === null) {
-                usuariosGuardados = [];
-            } else {
-                usuariosGuardados = JSON.parse(usuariosGuardados);
-            }
+            usuariosGuardados = usuariosGuardados === null ? [] : JSON.parse(usuariosGuardados);
 
             const valorIdentificacion = document.getElementById('identificacion').value;
             const valorUsername = document.getElementById('username').value;
@@ -43,6 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const valorPregunta = document.getElementById('pregunta-seguridad').value;
             const valorRespuesta = document.getElementById('respuesta-seguridad').value;
             const valorPassword = document.getElementById('password').value;
+
+            const usuarioExistente = usuariosGuardados.find(user => 
+                user.identificacion === valorIdentificacion || user.email === valorEmail
+            );
+
+            if (usuarioExistente) {
+                alert("Error: Ya existe un usuario registrado con esa identificación o correo electrónico.");
+                return;
+            }
 
             const nuevoUsuario = {
                 id: "user-" + Date.now(),
@@ -59,12 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             usuariosGuardados.push(nuevoUsuario);
-
-            const jsonUsuarios = JSON.stringify(usuariosGuardados);
-            localStorage.setItem(USERS_KEY, jsonUsuarios);
+            localStorage.setItem(USERS_KEY, JSON.stringify(usuariosGuardados));
 
             alert("Usuario registrado con éxito!!");
-            
             form.reset();
         });
     }
