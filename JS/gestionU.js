@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    const USERS_KEY = "acme_users";
+
     const bancoDePreguntas = [
         { id: 1, texto: "¿Cuál es el nombre de tu primera mascota?" },
         { id: 2, texto: "¿En qué ciudad nacieron tus padres?" },
@@ -10,34 +13,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectPregunta = document.getElementById('pregunta-seguridad');
 
     if (selectPregunta) {
-        bancoDePreguntas.forEach(pregunta => {
+        bancoDePreguntas.forEach((pregunta) => {
             const opcion = document.createElement('option');
-            opcion.value = pregunta.id; 
+            opcion.value = pregunta.id;
             opcion.textContent = pregunta.texto;
             selectPregunta.appendChild(opcion);
         });
     }
 
     const form = document.getElementById('registro-form');
+
     if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); 
+        form.addEventListener('submit', (event) => {
+            
+            event.preventDefault();
+
+            let usuariosGuardados = localStorage.getItem(USERS_KEY);
+
+            if (usuariosGuardados === null) {
+                usuariosGuardados = [];
+            } else {
+                usuariosGuardados = JSON.parse(usuariosGuardados);
+            }
+
+            const valorIdentificacion = document.getElementById('identificacion').value;
+            const valorUsername = document.getElementById('username').value;
+            const valorEmail = document.getElementById('email').value;
+            const valorTelefono = document.getElementById('telefono').value;
+            const valorPregunta = document.getElementById('pregunta-seguridad').value;
+            const valorRespuesta = document.getElementById('respuesta-seguridad').value;
+            const valorPassword = document.getElementById('password').value;
 
             const nuevoUsuario = {
-                identificacion: document.getElementById('identificacion').value,
-                username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
-                telefono: document.getElementById('telefono').value,
+                id: "user-" + Date.now(),
+                identificacion: valorIdentificacion,
+                username: valorUsername,
+                email: valorEmail,
+                telefono: valorTelefono,
+                password: valorPassword,
+                role: "student",
                 seguridad: {
-                    idPregunta: document.getElementById('pregunta-seguridad').value,
-                    respuesta: document.getElementById('respuesta-seguridad').value.toLowerCase().trim()
+                    idPregunta: valorPregunta,
+                    respuesta: valorRespuesta.toLowerCase().trim()
                 }
             };
 
-            localStorage.setItem(nuevoUsuario.identificacion, JSON.stringify(nuevoUsuario));
-            
+            usuariosGuardados.push(nuevoUsuario);
+
+            const jsonUsuarios = JSON.stringify(usuariosGuardados);
+            localStorage.setItem(USERS_KEY, jsonUsuarios);
+
             alert("Usuario registrado con éxito!!");
-            form.reset(); 
+            
+            form.reset();
         });
     }
 });
