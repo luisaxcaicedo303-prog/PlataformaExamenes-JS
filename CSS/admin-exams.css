@@ -224,6 +224,10 @@ a {
     border-top: 1px solid var(--border-color);
 }
 
+.mobile_menu a.hidden {
+    display: none;
+}
+
 /* PAGE */
 
 .page {
@@ -706,6 +710,10 @@ td small {
         border-radius: var(--radius-md);
         border: 1px solid var(--fourth-color);
         color: var(--nd-color);
+    }
+
+    .sidebar_link.hidden {
+        display: none;
     }
 
     .sidebar_link.active,

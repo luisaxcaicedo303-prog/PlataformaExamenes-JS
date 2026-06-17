@@ -1,6 +1,4 @@
-// ==========================
 // LOCAL STORAGE KEYS
-// ==========================
 
 const USERS_KEY = "acme_users";
 const EXAMS_KEY = "acme_exams";
@@ -8,9 +6,7 @@ const RESULTS_KEY = "acme_results";
 const SESSION_KEY = "acme_session";
 
 
-// ==========================
 // INITIAL USERS
-// ==========================
 
 const initialUsers = [
     {
@@ -34,9 +30,7 @@ const initialUsers = [
 ];
 
 
-// ==========================
 // INITIAL EXAMS
-// ==========================
 
 const initialExams = [
     {
@@ -168,21 +162,31 @@ const initialExams = [
 ];
 
 
-// ==========================
 // INITIAL RESULTS
-// ==========================
 
 const initialResults = [];
 
+// INNITIAL ACME SESSION
 
-// ==========================
+const initialSession = {
+        id: "user-001",
+        identificacion: "1001234567",
+        username: "admin",
+        password: "admin123",
+        role: "admin",
+        fullName: "Administrador Principal",
+        createdAt: "2026-06-15"
+    };
+
+
 // INIT LOCAL STORAGE
-// ==========================
 
 function initLocalStorage() {
+    
     const users = localStorage.getItem(USERS_KEY);
     const exams = localStorage.getItem(EXAMS_KEY);
     const results = localStorage.getItem(RESULTS_KEY);
+    const acme_session = localStorage.getItem(SESSION_KEY);
 
     if (!users) {
         localStorage.setItem(USERS_KEY, JSON.stringify(initialUsers));
@@ -194,6 +198,10 @@ function initLocalStorage() {
 
     if (!results) {
         localStorage.setItem(RESULTS_KEY, JSON.stringify(initialResults));
+    }
+
+    if (!acme_session) {
+        localStorage.setItem(SESSION_KEY, JSON.stringify(initialSession));
     }
 }
 
@@ -243,6 +251,10 @@ function getResults() {
 
 function saveResults(results) {
     saveData(RESULTS_KEY, results);
+}
+
+function getSession() {
+    return getData(SESSION_KEY);
 }
 
 function clearSession() {

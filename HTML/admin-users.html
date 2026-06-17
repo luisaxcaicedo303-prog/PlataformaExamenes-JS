@@ -17,11 +17,11 @@
             </a>
 
             <nav class="sidebar_nav">
-                <a href="./admin-exams.html" class="sidebar_link active" title="Gestión de exámenes">
+                <a href="./admin-exams.html" class="sidebar_link" title="Gestión de exámenes">
                     📝
                 </a>
 
-                <a href="./admin-users.html" class="sidebar_link" title="Usuarios">
+                <a href="./admin-users.html" class="sidebar_link  active admin_navigation" title="Usuarios">
                     👥
                 </a>
 
@@ -41,7 +41,7 @@
 
                 <label for="menu-toggle" class="hamburger_btn">
                     <span></span>
-                    <span></span>
+                    <span class="admin_navigation"></span>
                     <span></span>
                 </label>
 
@@ -51,8 +51,8 @@
                 </button>
 
                 <nav class="mobile_menu">
-                    <a href="./admin-exams.html" class="active">Gestión de exámenes</a>
-                    <a href="./admin-users.html">Usuarios</a>
+                    <a href="./admin-exams.html">Gestión de exámenes</a>
+                    <a href="./admin-users.html" class="active admin_navigation">Usuarios</a>
                     <a href="./admin-results.html">Exámenes resueltos</a>
 
                     <button type="button" class="logout_link logout_btn">
@@ -75,6 +75,8 @@
             </section>
         </main>
     </div>
+    <script src="../JS/storage.js"></script>
+    <script src="../JS/admin-users.js"></script>
 </body>
 
 </html>

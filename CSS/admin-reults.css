@@ -224,6 +224,10 @@ a {
     border-top: 1px solid var(--border-color);
 }
 
+.mobile_menu a.hidden {
+    display: none;
+}
+
 /* PAGE */
 
 .page {
@@ -405,6 +409,10 @@ a {
         background: var(--rd-color);
         color: var(--white-color);
         border-color: var(--rd-color);
+    }
+
+    .sidebar_link.hidden {
+        display: none;
     }
 
     .main {

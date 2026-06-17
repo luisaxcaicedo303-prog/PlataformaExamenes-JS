@@ -218,6 +218,10 @@ a {
     color: var(--rd-color);
 }
 
+.mobile_menu a.hidden {
+    display: none;
+}
+
 .mobile_menu .logout_link {
     margin-top: 0.5rem;
     color: var(--danger-color);
@@ -404,6 +408,10 @@ a {
         background: var(--rd-color);
         color: var(--white-color);
         border-color: var(--rd-color);
+    }
+
+    .sidebar_link.hidden {
+        display: none;
     }
 
     .main {

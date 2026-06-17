@@ -15,6 +15,9 @@ const searchExamInput = document.getElementById("search-exam");
 const examsCount = document.getElementById("exams-count");
 
 const logoutButtons = document.querySelectorAll(".logout_btn");
+
+const adminLinks = document.querySelectorAll(".admin_navigation");
+
 console.log("entro");
 let editingExamId = null;
 
@@ -295,6 +298,23 @@ function renderExams(examsToRender = getExams()) {
     });
 }
 
+function renderExamsSession(){
+    const session = getSession();
+
+    if (!session) {
+        window.location.href = "../index.html";
+        return;
+    }
+
+    adminLinks.forEach((link) => {
+        if (session.role === "admin") {
+            link.classList.remove("hidden");
+        } else {
+            link.classList.add("hidden");
+        }
+    });
+}
+
 function handleSaveExam(event) {
     event.preventDefault();
 
@@ -454,6 +474,7 @@ function handleLogout() {
 
 function initAdminExamsPage() {
     renderExams();
+    renderExamsSession();
     if (questionsContainer.children.length === 0) {
         addQuestion();
     }
