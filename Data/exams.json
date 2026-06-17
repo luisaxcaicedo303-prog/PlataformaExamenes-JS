@@ -1,11 +1,9 @@
-const exams = [
+[
     {
         "id": 1,
         "title": "Fundamentos de JavaScript",
         "description": "Evalúa conocimientos básicos sobre variables, tipos de datos, funciones, arreglos, objetos y estructuras de control en JavaScript.",
         "time": 45,
-        "num_questions": "20",
-        "difficulty": "Básico",
         "approval_percent": 70,
         "questions": [
             {
@@ -215,8 +213,6 @@ const exams = [
         "title": "Fundamentos de Python",
         "description": "Evalúa conocimientos básicos sobre sintaxis, variables, tipos de datos, estructuras de control, funciones y colecciones en Python.",
         "time": 45,
-        "num_questions": "20",
-        "difficulty": "Intermedio",
         "approval_percent": 70,
         "questions": [
             {
@@ -426,8 +422,6 @@ const exams = [
         "title": "Fundamentos de HTML",
         "description": "Evalúa conocimientos básicos sobre la estructura de documentos HTML, etiquetas semánticas, formularios, enlaces, imágenes y buenas prácticas de desarrollo web.",
         "time": 45,
-        "num_questions": "20",
-        "difficulty": "Avanzado",
         "approval_percent": 70,
         "questions": [
             {
@@ -633,55 +627,3 @@ const exams = [
         ]
     }
 ]
-
-
-function iniciarExamenes() {
-    if (localStorage.getItem("exams") === null) {
-        localStorage.setItem("exams", JSON.stringify(exams));
-    }
-    else {
-        console.log("Los exámenes ya están cargados en el localStorage.");
-    }
-}
-
-function cargarExamenes() {
-    const examenes = JSON.parse(localStorage.getItem("exams"));
-    const contenedor = document.getElementById("cartas");
-
-    examenes.forEach(examen => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-
-        const difficulty = document.createElement("span");
-        difficulty.textContent = examen.difficulty;
-        difficulty.classList.add("nivel");
-        card.appendChild(difficulty);
-
-        const title = document.createElement("h2");
-        title.textContent = examen.title;
-        card.appendChild(title);
-
-        const description = document.createElement("p");
-        description.textContent = examen.description;
-        card.appendChild(description);
-
-        const time = document.createElement("p");
-        time.textContent = "Tiempo: " + examen.time + " minutos";
-        card.appendChild(time);
-
-        const num_questions = document.createElement("p");
-        num_questions.textContent = "Número de preguntas: " + examen.num_questions;
-        card.appendChild(num_questions);
-
-        const approval = document.createElement("p");
-        approval.textContent = `Porcentaje de aprobación: ${examen.approval_percent}%`;
-        card.appendChild(approval);
-
-        contenedor.appendChild(card);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    iniciarExamenes();
-    cargarExamenes();
-});
