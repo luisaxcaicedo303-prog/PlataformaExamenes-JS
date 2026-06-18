@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    const USERS_KEY = "acme_users";
 
     const bancoDePreguntas = [
         { id: 1, texto: "¿Cuál es el nombre de tu primera mascota?" },
@@ -27,9 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            let usuariosGuardados = localStorage.getItem(USERS_KEY);
-            usuariosGuardados = usuariosGuardados === null ? [] : JSON.parse(usuariosGuardados);
-
+            let usuariosGuardados = getUsers();
+            console.log(usuariosGuardados);
             const valorIdentificacion = document.getElementById('identificacion').value;
             const valorUsername = document.getElementById('username').value;
             const valorEmail = document.getElementById('email').value;
@@ -62,10 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             usuariosGuardados.push(nuevoUsuario);
-            localStorage.setItem(USERS_KEY, JSON.stringify(usuariosGuardados));
-
+            saveUsers(usuariosGuardados);
+            saveSession(nuevoUsuario);
             alert("Usuario registrado con éxito!!");
             form.reset();
+            window.location.href = "admin-exams.html";
         });
     }
 });

@@ -13,7 +13,7 @@ function renderResultsSession() {
     const session = getSession();
 
     if (!session) {
-        window.location.href = "../index.html";
+        window.location.href = "login.html";
         return false;
     }
 
@@ -379,7 +379,7 @@ function handleLogout() {
     }
 
     clearSession();
-    window.location.href = "../index.html";
+    window.location.href = "login.html";
 }
 
 

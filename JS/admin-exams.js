@@ -352,7 +352,7 @@ function renderExamsSession(){
     const session = getSession();
 
     if (!session) {
-        window.location.href = "../index.html";
+        window.location.href = "login.html";
         return;
     }
 
@@ -517,7 +517,7 @@ function handleLogout() {
     }
 
     clearSession();
-    window.location.href = "../index.html";
+    window.location.href = "login.html";
 }
 
 // INIT PAGE

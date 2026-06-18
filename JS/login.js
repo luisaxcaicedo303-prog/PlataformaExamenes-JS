@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const USERS_KEY = "acme_users";
     const form = document.getElementById('iniciar-Sesion');
 
     if (form) {
@@ -9,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const emailIngresado = document.getElementById('username').value;
             const passwordIngresado = document.getElementById('password').value;
 
-            const usuariosGuardados = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+            const usuariosGuardados = getUsers();
+            console.log(usuariosGuardados);
 
             // Validación de credenciales
             const usuarioEncontrado = usuariosGuardados.find(user => 
@@ -18,15 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (usuarioEncontrado) {
                 alert("¡Bienvenido, " + usuarioEncontrado.username + "!");
-                localStorage.setItem("usuario_sesion", JSON.stringify(usuarioEncontrado));
-                window.location.href = "dashboard.html"; 
+                saveSession(usuarioEncontrado);
+                window.location.href = "admin-exams.html";
             } else {
                 alert("Correo o contraseña incorrectos.");
             }
         });
     }
 });
-const USERS_KEY = "acme_users";
 
 // 1. Validar si el usuario existe y mostrar su pregunta de seguridad
 

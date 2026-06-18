@@ -207,19 +207,7 @@ const initialResults = [
 
 // INNITIAL ACME SESSION
 
-const initialSession = {
-        id: "user-001",
-        identificacion: "1001234567",
-        username: "admin",
-        email: "admin@acmeexam.com",
-        telefono: "3001234567",
-        password: "admin123",
-        role: "admin",
-        seguridad: {
-            idPregunta: "1",
-            respuesta: "firulais"
-        },
-};
+const initialSession = "";
 
 
 // INIT LOCAL STORAGE
@@ -297,6 +285,10 @@ function saveResults(results) {
 
 function getSession() {
     return getData(SESSION_KEY);
+}
+
+function saveSession(session) {
+    saveData(SESSION_KEY, session);
 }
 
 function clearSession() {
