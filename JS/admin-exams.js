@@ -18,11 +18,43 @@ const logoutButtons = document.querySelectorAll(".logout_btn");
 
 const adminLinks = document.querySelectorAll(".admin_navigation");
 
-console.log("entro");
 let editingExamId = null;
 
 function createId(prefix) {
     return `${prefix}-${Date.now()}`;
+}
+
+function getOptionLetter(index) {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    if (index < letters.length) {
+        return letters[index];
+    }
+
+    return index + 1;
+}
+
+function createAnswerOptionHTML(questionNumber, optionIndex, optionValue = "", correctAnswer = null) {
+    const optionLetter = getOptionLetter(optionIndex);
+
+    return `
+        <label class="answer_option">
+            <input 
+                type="radio" 
+                name="correct-answer-${questionNumber}" 
+                value="${optionIndex}"
+                ${Number(correctAnswer) === optionIndex ? "checked" : ""}
+            >
+
+            <input 
+                type="text" 
+                class="answer_input"
+                placeholder="Opción ${optionLetter}"
+                value="${optionValue}"
+                required
+            >
+        </label>
+    `;
 }
 
 function createQuestionCard(questionNumber, questionData = null) {
@@ -32,10 +64,16 @@ function createQuestionCard(questionNumber, questionData = null) {
     const questionText = questionData ? questionData.question : "";
 
     const options = questionData
-        ? questionData.response_options
-        : ["", "", "", ""];
+        ? questionData.response_options || questionData.options || ["", ""]
+        : ["", ""];
 
     const correctAnswer = questionData ? questionData.correct_answer : null;
+
+    let optionsHTML = "";
+
+    options.forEach((option, index) => {
+        optionsHTML += createAnswerOptionHTML(questionNumber, index, option, correctAnswer);
+    });
 
     questionCard.innerHTML = `
         <div class="question_card_top">
@@ -54,77 +92,73 @@ function createQuestionCard(questionNumber, questionData = null) {
         </div>
 
         <div class="answer_list">
-            <label class="answer_option">
-                <input 
-                    type="radio" 
-                    name="correct-answer-${questionNumber}" 
-                    value="0"
-                    ${correctAnswer === 0 ? "checked" : ""}
-                >
-                <input 
-                    type="text" 
-                    class="answer_input"
-                    placeholder="Opción A"
-                    value="${options[0] || ""}"
-                    required
-                >
-            </label>
+            ${optionsHTML}
+        </div>
 
-            <label class="answer_option">
-                <input 
-                    type="radio" 
-                    name="correct-answer-${questionNumber}" 
-                    value="1"
-                    ${correctAnswer === 1 ? "checked" : ""}
-                >
-                <input 
-                    type="text" 
-                    class="answer_input"
-                    placeholder="Opción B"
-                    value="${options[1] || ""}"
-                    required
-                >
-            </label>
+        <div class="answer_actions">
+            <button type="button" class="btn btn_outline add_option_btn">
+                + Agregar opción
+            </button>
 
-            <label class="answer_option">
-                <input 
-                    type="radio" 
-                    name="correct-answer-${questionNumber}" 
-                    value="2"
-                    ${correctAnswer === 2 ? "checked" : ""}
-                >
-                <input 
-                    type="text" 
-                    class="answer_input"
-                    placeholder="Opción C"
-                    value="${options[2] || ""}"
-                    required
-                >
-            </label>
-
-            <label class="answer_option">
-                <input 
-                    type="radio" 
-                    name="correct-answer-${questionNumber}" 
-                    value="3"
-                    ${correctAnswer === 3 ? "checked" : ""}
-                >
-                <input 
-                    type="text" 
-                    class="answer_input"
-                    placeholder="Opción D"
-                    value="${options[3] || ""}"
-                    required
-                >
-            </label>
+            <button type="button" class="btn btn_ghost remove_option_btn">
+                - Quitar opción
+            </button>
         </div>
 
         <small class="hint">
-            Selecciona el círculo de la respuesta correcta.
+            Cada pregunta debe tener mínimo dos opciones. Selecciona el círculo de la respuesta correcta.
         </small>
     `;
 
     return questionCard;
+}
+
+function updateAnswerOptions(card, questionNumber) {
+    const answerOptions = card.querySelectorAll(".answer_option");
+
+    answerOptions.forEach((option, index) => {
+        const radioInput = option.querySelector('input[type="radio"]');
+        const textInput = option.querySelector(".answer_input");
+
+        radioInput.name = `correct-answer-${questionNumber}`;
+        radioInput.value = index;
+
+        textInput.placeholder = `Opción ${getOptionLetter(index)}`;
+    });
+}
+
+function addAnswerOption(card) {
+    const questionCards = Array.from(questionsContainer.children);
+    const questionNumber = questionCards.indexOf(card) + 1;
+
+    const answerList = card.querySelector(".answer_list");
+    const answerOptions = answerList.querySelectorAll(".answer_option");
+    const newOptionIndex = answerOptions.length;
+
+    answerList.insertAdjacentHTML(
+        "beforeend",
+        createAnswerOptionHTML(questionNumber, newOptionIndex)
+    );
+
+    updateAnswerOptions(card, questionNumber);
+}
+
+function removeAnswerOption(card) {
+    const answerList = card.querySelector(".answer_list");
+    const answerOptions = answerList.querySelectorAll(".answer_option");
+
+    if (answerOptions.length <= 2) {
+        alert("Cada pregunta debe tener mínimo dos opciones de respuesta.");
+        return;
+    }
+
+    const lastOption = answerOptions[answerOptions.length - 1];
+    lastOption.remove();
+
+    const questionCards = Array.from(questionsContainer.children);
+    const questionNumber = questionCards.indexOf(card) + 1;
+
+    updateAnswerOptions(card, questionNumber);
 }
 
 function addQuestion(questionData = null) {
@@ -140,25 +174,33 @@ function updateQuestionNumbers() {
     questionCards.forEach((card, index) => {
         const questionNumber = index + 1;
         const questionTitle = card.querySelector(".question_card_top span");
-        const radioInputs = card.querySelectorAll('input[type="radio"]');
 
         questionTitle.textContent = `Pregunta ${questionNumber}`;
 
-        radioInputs.forEach((radio) => {
-            radio.name = `correct-answer-${questionNumber}`;
-        });
+        updateAnswerOptions(card, questionNumber);
     });
 }
 
-function handleDeleteQuestion(event) {
-    if (!event.target.classList.contains("delete_question_btn")) {
+function handleQuestionActions(event) {
+    const target = event.target;
+    const questionCard = target.closest(".question_card");
+
+    if (!questionCard) {
         return;
     }
 
-    const questionCard = event.target.closest(".question_card");
+    if (target.classList.contains("delete_question_btn")) {
+        questionCard.remove();
+        updateQuestionNumbers();
+    }
 
-    questionCard.remove();
-    updateQuestionNumbers();
+    if (target.classList.contains("add_option_btn")) {
+        addAnswerOption(questionCard);
+    }
+
+    if (target.classList.contains("remove_option_btn")) {
+        removeAnswerOption(questionCard);
+    }
 }
 
 function collectQuestions() {
@@ -180,6 +222,7 @@ function collectQuestions() {
         questions.push({
             question: questionText,
             response_options: responseOptions,
+            options: responseOptions,
             correct_answer: Number(correctAnswerInput.value)
         });
     });
@@ -205,6 +248,11 @@ function validateQuestions() {
             return false;
         }
 
+        if (answerInputs.length < 2) {
+            alert("Cada pregunta debe tener mínimo dos opciones de respuesta.");
+            return false;
+        }
+
         for (const input of answerInputs) {
             if (!input.value.trim()) {
                 alert("Todas las opciones de respuesta deben estar completas.");
@@ -217,6 +265,7 @@ function validateQuestions() {
             return false;
         }
     }
+
     return true;
 }
 
@@ -487,7 +536,7 @@ addQuestionBtn.addEventListener("click", () => {
     addQuestion();
 });
 
-questionsContainer.addEventListener("click", handleDeleteQuestion);
+questionsContainer.addEventListener("click", handleQuestionActions);
 
 examForm.addEventListener("submit", handleSaveExam);
 

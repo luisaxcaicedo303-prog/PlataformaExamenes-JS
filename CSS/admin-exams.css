@@ -234,6 +234,16 @@ a {
     padding: 1.25rem;
 }
 
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted-color);
+}
+
 .page_header {
     margin-bottom: 1.5rem;
 }
@@ -445,6 +455,14 @@ a {
     color: var(--text-muted-color);
 }
 
+.answer_actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: .05rem;
+}
+
 /* BUTTONS */
 
 .form_actions {
@@ -652,7 +670,10 @@ td small {
         justify-content: flex-end;
     }
 
-    
+    .answer_actions {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
 }
 
 /* DESKTOP */
