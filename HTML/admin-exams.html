@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcmeExam | Gestión de exámenes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/admin-exams.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <a href="./admin-exams.html" class="sidebar_logo" title="Ir a gestión de exámenes">
+                <span class="logo_icon">A</span>
+            </a>
+
+            <nav class="sidebar_nav">
+                <a href="./admin-exams.html" class="sidebar_link active" title="Gestión de exámenes">
+                    📝
+                </a>
+
+                <a href="./admin-users.html" class="sidebar_link admin_navigation" title="Usuarios">
+                    👥
+                </a>
+
+                <a href="./admin-results.html" class="sidebar_link" title="Exámenes resueltos">
+                    📊
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+
+                <a href="./admin-exams.html" class="topbar_brand" title="Ir a gestión de exámenes">
+                    <img src="../Assets/images/logo.png" alt="AcmeExam" class="topbar_logo">
+                </a>
+
+                <input type="checkbox" id="menu-toggle" class="menu_toggle">
+
+                <label for="menu-toggle" class="hamburger_btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+
+                <button type="button" class="logout_desktop_btn logout_btn">
+                    Cerrar sesión
+                </button>
+
+                <nav class="mobile_menu">
+                    <a href="./admin-exams.html" class="active">Gestión de exámenes</a>
+                    <a href="./admin-users.html" class="admin_navigation">Usuarios</a>
+                    <a href="./admin-results.html">Exámenes resueltos</a>
+
+                    <button type="button" class="logout_link logout_btn">
+                        Cerrar sesión
+                    </button>
+                </nav>
+
+            </header>
+
+            <section class="page">
+
+                <div class="page_header">
+                    <span class="eyebrow">Banco de examenes</span>
+                    <h1>Gestión de exámenes</h1>
+                    <p>
+                        Configura exámenes, preguntas y respuestas. Cada pregunta admite una única respuesta correcta.
+                    </p>
+                </div>
+
+                <div class="dashboard">
+
+                    <section class="card card_form">
+                        <div class="card_header">
+                            <h2>
+                                <span>＋</span>
+                                Crear examen
+                            </h2>
+                        </div>
+
+                        <form class="exam_form" id="exam-form">
+
+                            <div class="form_grid">
+                                <div class="form_group">
+                                    <label for="exam-code">Código</label>
+                                    <input type="text" id="exam-code" placeholder="Ej. JS-101">
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="exam-title">Título</label>
+                                    <input type="text" id="exam-title" placeholder="Ej. Fundamentos de JavaScript">
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="exam-time">Tiempo en minutos</label>
+                                    <input type="number" id="exam-time" placeholder="30">
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="exam-percent">Porcentaje de aprobación</label>
+                                    <input type="number" id="exam-percent" placeholder="70">
+                                </div>
+                            </div>
+
+                            <div class="form_group">
+                                <label for="exam-description">Descripción</label>
+                                <textarea id="exam-description" rows="4"
+                                    placeholder="Describe el contenido o propósito del examen..."></textarea>
+                            </div>
+
+                            <div class="questions_header">
+                                <h3>Preguntas</h3>
+                                <button type="button" class="btn btn_outline" id="add-question-btn">
+                                    + Agregar pregunta
+                                </button>
+                            </div>
+
+                            <div class="questions_container" id="questions-container">
+                                <!-- Aquí se agregan las preguntas con JavaScript -->
+                            </div>
+
+                            <div class="form_actions">
+                                <button type="reset" class="btn btn_ghost">
+                                    Limpiar
+                                </button>
+
+                                <button type="submit" class="btn btn_primary">
+                                    Guardar examen
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="card card_table">
+                        <div class="card_header card_header_between">
+                            <h2>
+                                <span>☰</span>
+                                Exámenes registrados
+                            </h2>
+
+                            <span class="badge" id="exams-count">0</span>
+                        </div>
+
+                        <div class="search_box">
+                            <input type="search" id="search-exam" placeholder="Buscar por código, título o tema...">
+                        </div>
+
+                        <div class="table_wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Examen</th>
+                                        <th>Tiempo</th>
+                                        <th>Aprobación</th>
+                                        <th>Preguntas</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="exams-table-body">
+                                    <tr>
+                                        <td>
+                                            <span class="code">JS-101</span>
+                                        </td>
+                                        <td>
+                                            <strong>Fundamentos de JavaScript</strong>
+                                            <small>Variables, funciones y DOM</small>
+                                        </td>
+                                        <td>30 min</td>
+                                        <td>
+                                            <div class="progress">
+                                                <span class="progress_70"></span>
+                                            </div>
+                                            <small>70%</small>
+                                        </td>
+                                        <td>20</td>
+                                        <td>
+                                            <div class="actions">
+                                                <button class="btn_table">Editar</button>
+                                                <button class="btn_table danger">Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span class="code">PY-102</span>
+                                        </td>
+                                        <td>
+                                            <strong>Fundamentos de Python</strong>
+                                            <small>Sintaxis, listas y condicionales</small>
+                                        </td>
+                                        <td>40 min</td>
+                                        <td>
+                                            <div class="progress">
+                                                <span class="progress_75"></span>
+                                            </div>
+                                            <small>75%</small>
+                                        </td>
+                                        <td>20</td>
+                                        <td>
+                                            <div class="actions">
+                                                <button class="btn_table">Editar</button>
+                                                <button class="btn_table danger">Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span class="code">HTML-103</span>
+                                        </td>
+                                        <td>
+                                            <strong>Fundamentos de HTML</strong>
+                                            <small>Etiquetas, estructura y formularios</small>
+                                        </td>
+                                        <td>35 min</td>
+                                        <td>
+                                            <div class="progress">
+                                                <span class="progress_80"></span>
+                                            </div>
+                                            <small>80%</small>
+                                        </td>
+                                        <td>20</td>
+                                        <td>
+                                            <div class="actions">
+                                                <button class="btn_table">Editar</button>
+                                                <button class="btn_table danger">Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../JS/storage.js"></script>
+    <script src="../JS/admin-exams.js"></script>
+</body>
+
+</html>
