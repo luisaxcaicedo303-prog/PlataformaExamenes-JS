@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcmeExam - Iniciar Sesión</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+
+    <main class="main-container">
+
+        <section class="presentacion">
+            <div class="header-logo">
+                <a href="login.html">
+                    <img src="icono.png" alt="AcmeExam" class="logo-img">
+                </a>
+            </div>
+
+            <div class="content-left">
+                <h2>PLATAFORMA DE EVALUACIÓN</h2>
+                <h1>Crea y resuelve exámenes con total control.</h1>
+                <p>Gestiona usuarios, asigna evaluaciones y revisa resultados en tiempo real desde un solo lugar.</p>
+            </div>
+
+            <div class="card-resolver-clean">
+                <img src="estudiante.png" alt="Resolver Examen" class="card-img">
+                <button class="btn-resolver">RESOLVER EXAMEN 📝</button>
+            </div>
+        </section>
+
+        <section class="login-form">
+            <div class="form-wrapper">
+                <h2>Iniciar sesión</h2>
+                <p>Accede con tu cuenta autorizada</p>
+
+                <form id="iniciar-Sesion">
+                    <label for="username">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="username" placeholder="admin@acme.edu">
+
+                    <label for="password">CONTRASEÑA</label>
+                    <input type="password" id="password" placeholder="••••••••">
+
+                    <button type="submit" class="btn-entrar">Entrar</button>
+                </form>
+
+                <p class="footer-text">¿Sin cuenta aún? crea tu cuenta. <strong><a href="gestionU.html" class="registro">Registrarse</a></strong>.</p>
+            </div>
+        </section>
+    </main>
+<script src="login.js" ></script>
+</body>
+</html>

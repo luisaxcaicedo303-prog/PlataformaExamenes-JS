@@ -1,0 +1,173 @@
+:root {
+    --st-color: #000022;
+    --nd-color: #f1fffa;
+    --rd-color: #007fff;
+    --fourth-color: #5aa9e6;
+    --fifth-color: #6f686d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+
+.presentacion {
+    flex: 1;
+    background-color: var(--st-color);
+    color: var(--nd-color);
+    padding: 40px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-logo {
+    margin-bottom: 30px;
+}
+
+.logo-img {
+    width: 150px;
+    cursor: pointer;
+}
+
+.presentacion h2 {
+    color: var(--rd-color);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.presentacion h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.presentacion p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.card-resolver-clean {
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    margin: 0 auto;
+}
+
+.card-img {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.btn-resolver {
+    width: 100%;
+    padding: 13px;
+    background: white;
+    color: var(--st-color);
+    border: none;
+    border-radius: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-resolver:hover {
+    background: var(--rd-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.login-form {
+    flex: 1;
+    background-color: var(--nd-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+label {
+    font-weight: 900;
+    color: var(--st-color);
+    font-size: 0.85rem;
+}
+
+input {
+    padding: 13px;
+    border: 2px solid var(--fourth-color);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+.btn-entrar {
+    padding: 15px;
+    background: var(--rd-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-entrar:hover {
+    background: var(--st-color);
+    transform: translateY(-3px);
+}
+
+.footer-text {
+    margin-top: 30px;
+    color: var(--fifth-color);
+}
+
+.registro {
+    color: var(--rd-color);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        display: block;
+        overflow-y: auto;
+    }
+    .presentacion {
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .presentacion h1 {
+        font-size: 2.5rem;
+    }
+}
