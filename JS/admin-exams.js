@@ -228,8 +228,9 @@ function resetExamForm() {
     addQuestion();
 }
 
-function renderExams(examsToRender = getExams()) {
+function renderExams() {
     console.log("entro 2");
+    const examsToRender = getExams();
     examsTableBody.innerHTML = "";
 
     examsCount.textContent = examsToRender.length;

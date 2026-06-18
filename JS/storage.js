@@ -13,19 +13,27 @@ const initialUsers = [
         id: "user-001",
         identificacion: "1001234567",
         username: "admin",
+        email: "admin@acmeexam.com",
+        telefono: "3001234567",
         password: "admin123",
         role: "admin",
-        fullName: "Administrador Principal",
-        createdAt: "2026-06-15"
+        seguridad: {
+            idPregunta: "1",
+            respuesta: "firulais"
+        },
     },
     {
         id: "user-002",
         identificacion: "1007654321",
         username: "docente",
+        email: "docente@acmeexam.com",
+        telefono: "3017654321",
         password: "docente123",
         role: "teacher",
-        fullName: "Docente de Prueba",
-        createdAt: "2026-06-15"
+        seguridad: {
+            idPregunta: "4",
+            respuesta: "pizza"
+        },
     }
 ];
 
@@ -164,7 +172,38 @@ const initialExams = [
 
 // INITIAL RESULTS
 
-const initialResults = [];
+const initialResults = [
+    {
+        id: "result-001",
+        examId: "exam-001",
+        studentName: "Carlos Pérez",
+        studentIdentification: "1098765432",
+        timeUsed: "32 min",
+        submittedAt: "2026-06-18T10:30:00",
+        answers: [
+            { questionIndex: 0, selected_answer: 1 },
+            { questionIndex: 1, selected_answer: 2 },
+            { questionIndex: 2, selected_answer: 1 },
+            { questionIndex: 3, selected_answer: 2 },
+            { questionIndex: 4, selected_answer: 0 },
+            { questionIndex: 5, selected_answer: 1 },
+            { questionIndex: 6, selected_answer: 2 },
+            { questionIndex: 7, selected_answer: 0 },
+            { questionIndex: 8, selected_answer: 3 },
+            { questionIndex: 9, selected_answer: 1 },
+            { questionIndex: 10, selected_answer: 3 },
+            { questionIndex: 11, selected_answer: 1 },
+            { questionIndex: 12, selected_answer: 2 },
+            { questionIndex: 13, selected_answer: 0 },
+            { questionIndex: 14, selected_answer: 0 },
+            { questionIndex: 15, selected_answer: 1 },
+            { questionIndex: 16, selected_answer: 0 },
+            { questionIndex: 17, selected_answer: 2 },
+            { questionIndex: 18, selected_answer: 1 },
+            { questionIndex: 19, selected_answer: 2 }
+        ]
+    }
+];
 
 // INNITIAL ACME SESSION
 
@@ -172,17 +211,20 @@ const initialSession = {
         id: "user-001",
         identificacion: "1001234567",
         username: "admin",
+        email: "admin@acmeexam.com",
+        telefono: "3001234567",
         password: "admin123",
         role: "admin",
-        fullName: "Administrador Principal",
-        createdAt: "2026-06-15"
-    };
+        seguridad: {
+            idPregunta: "1",
+            respuesta: "firulais"
+        },
+};
 
 
 // INIT LOCAL STORAGE
 
 function initLocalStorage() {
-    
     const users = localStorage.getItem(USERS_KEY);
     const exams = localStorage.getItem(EXAMS_KEY);
     const results = localStorage.getItem(RESULTS_KEY);
@@ -262,8 +304,6 @@ function clearSession() {
 }
 
 
-// ==========================
 // RUN INIT
-// ==========================
 
 initLocalStorage();

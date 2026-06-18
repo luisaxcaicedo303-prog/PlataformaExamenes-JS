@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcmeExam | Gestión de exámenes</title>
+    <title>AcmeExam | Exámenes resueltos</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/CSS/admin-reults.css">
+    <link rel="stylesheet" href="../CSS/admin-results.css">
 </head>
 
 <body>
     <div class="app">
+
         <aside class="sidebar">
             <a href="./admin-exams.html" class="sidebar_logo" title="Ir a gestión de exámenes">
                 <span class="logo_icon">A</span>
@@ -32,6 +34,7 @@
         </aside>
 
         <main class="main">
+
             <header class="topbar">
                 <a href="./admin-exams.html" class="topbar_brand" title="Ir a gestión de exámenes">
                     <img src="../Assets/images/logo.png" alt="AcmeExam" class="topbar_logo">
@@ -41,10 +44,9 @@
 
                 <label for="menu-toggle" class="hamburger_btn">
                     <span></span>
-                    <span class="admin_navigation"></span>
+                    <span></span>
                     <span></span>
                 </label>
-
 
                 <button type="button" class="logout_desktop_btn logout_btn">
                     Cerrar sesión
@@ -59,22 +61,84 @@
                         Cerrar sesión
                     </button>
                 </nav>
-
             </header>
+
             <section class="page">
                 <div class="page_header">
-                    <h1>Examenes resueltos</h1>
+                    <span class="eyebrow">Historial de pruebas</span>
+
+                    <h1>Exámenes resueltos</h1>
+
                     <p>
-                        Mostrar informaciòn de examenes.
+                        Visualiza los resultados de los usuarios que presentaron exámenes en la plataforma.
                     </p>
                 </div>
 
                 <div class="dashboard">
 
+                    <section class="card card_detail">
+                        <div class="card_header">
+                            <h2>
+                                <span>☑</span>
+                                Detalle del resultado
+                            </h2>
+                        </div>
+
+                        <div class="result_detail" id="result-detail">
+                            <div class="empty_state">
+                                <h3>Selecciona un resultado</h3>
+                                <p>
+                                    Haz clic en “Ver detalle” para revisar las respuestas del usuario.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card card_table">
+                        <div class="card_header card_header_between">
+                            <h2>
+                                <span>☰</span>
+                                Resultados registrados
+                            </h2>
+
+                            <span class="badge" id="results-count">0</span>
+                        </div>
+
+                        <div class="search_box">
+                            <input 
+                                type="search"
+                                id="search-result"
+                                placeholder="Buscar por usuario, identificación o examen..."
+                            >
+                        </div>
+
+                        <div class="table_wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Identificación</th>
+                                        <th>Examen</th>
+                                        <th>Tiempo</th>
+                                        <th>Puntaje</th>
+                                        <th>Estado</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="results-table-body">
+                                    <!-- Resultados renderizados con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
                 </div>
             </section>
+
         </main>
     </div>
+
     <script src="../JS/storage.js"></script>
     <script src="../JS/admin-results.js"></script>
 </body>

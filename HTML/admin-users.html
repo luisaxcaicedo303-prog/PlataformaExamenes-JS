@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcmeExam | Gestión de exámenes</title>
+    <title>AcmeExam | Gestión de usuarios</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/CSS/admin-users.css">
+    <link rel="stylesheet" href="../CSS/admin-users.css">
 </head>
 
 <body>
     <div class="app">
+
         <aside class="sidebar">
             <a href="./admin-exams.html" class="sidebar_logo" title="Ir a gestión de exámenes">
                 <span class="logo_icon">A</span>
@@ -21,7 +23,7 @@
                     📝
                 </a>
 
-                <a href="./admin-users.html" class="sidebar_link  active admin_navigation" title="Usuarios">
+                <a href="./admin-users.html" class="sidebar_link active admin_navigation" title="Usuarios">
                     👥
                 </a>
 
@@ -32,6 +34,7 @@
         </aside>
 
         <main class="main">
+
             <header class="topbar">
                 <a href="./admin-exams.html" class="topbar_brand" title="Ir a gestión de exámenes">
                     <img src="../Assets/images/logo.png" alt="AcmeExam" class="topbar_logo">
@@ -41,10 +44,9 @@
 
                 <label for="menu-toggle" class="hamburger_btn">
                     <span></span>
-                    <span class="admin_navigation"></span>
+                    <span></span>
                     <span></span>
                 </label>
-
 
                 <button type="button" class="logout_desktop_btn logout_btn">
                     Cerrar sesión
@@ -59,22 +61,159 @@
                         Cerrar sesión
                     </button>
                 </nav>
-
             </header>
+
             <section class="page">
                 <div class="page_header">
-                    <h1>Gestion de Usuarios</h1>
+                    <span class="eyebrow">Panel administrativo</span>
+                    <h1>Gestión de usuarios</h1>
                     <p>
-                        Modificar usuarios.
+                        Crea, edita y elimina usuarios registrados en la plataforma. Solo los administradores pueden acceder a esta sección.
                     </p>
                 </div>
 
                 <div class="dashboard">
 
+                    <section class="card card_form">
+                        <div class="card_header">
+                            <h2>
+                                <span>＋</span>
+                                Crear usuario
+                            </h2>
+                        </div>
+
+                        <form class="user_form" id="user-form">
+
+                            <div class="form_grid">
+                                <div class="form_group">
+                                    <label for="user-identificacion">Identificación</label>
+                                    <input type="text" id="user-identificacion" placeholder="Ej. 1001234567" required>
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="user-username">Usuario</label>
+                                    <input type="text" id="user-username" placeholder="Ej. docente01" required>
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="user-email">Correo</label>
+                                    <input type="email" id="user-email" placeholder="Ej. usuario@email.com" required>
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="user-telefono">Teléfono</label>
+                                    <input type="text" id="user-telefono" placeholder="Ej. 3001234567" required>
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="user-password">Contraseña</label>
+                                    <input type="password" id="user-password" placeholder="Contraseña" required>
+                                </div>
+
+                                <div class="form_group">
+                                    <label for="user-role">Rol</label>
+                                    <select id="user-role" required>
+                                        <option value="">Selecciona un rol</option>
+                                        <option value="admin">Administrador</option>
+                                        <option value="teacher">Docente</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form_group">
+                                <label for="security-question">Pregunta de seguridad</label>
+                                <select id="security-question" required>
+                                    <option value="">Selecciona una pregunta</option>
+                                    <option value="1">¿Cuál es el nombre de tu primera mascota?</option>
+                                    <option value="2">¿En qué ciudad nacieron tus padres?</option>
+                                    <option value="3">¿Cuál es el nombre de tus padres?</option>
+                                    <option value="4">¿Cuál es el nombre de tu comida favorita?</option>
+                                    <option value="5">¿Cuál es el nombre de tu colegio de primaria?</option>
+                                </select>
+                            </div>
+
+                            <div class="form_group">
+                                <label for="security-answer">Respuesta de seguridad</label>
+                                <input type="text" id="security-answer" placeholder="Respuesta de seguridad" required>
+                            </div>
+
+                            <div class="form_actions">
+                                <button type="reset" class="btn btn_ghost" id="clear-user-form">
+                                    Limpiar
+                                </button>
+
+                                <button type="submit" class="btn btn_primary" id="save-user-btn">
+                                    Guardar usuario
+                                </button>
+                            </div>
+
+                        </form>
+                    </section>
+
+                    <section class="card card_table">
+                        <div class="card_header card_header_between">
+                            <h2>
+                                <span>☰</span>
+                                Usuarios registrados
+                            </h2>
+
+                            <span class="badge" id="users-count">0</span>
+                        </div>
+
+                        <div class="search_box">
+                            <input type="search" id="search-user" placeholder="Buscar por identificación, usuario, correo o rol...">
+                        </div>
+
+                        <div class="table_wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificación</th>
+                                        <th>Usuario</th>
+                                        <th>Correo</th>
+                                        <th>Teléfono</th>
+                                        <th>Rol</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="users-table-body">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
                 </div>
             </section>
         </main>
     </div>
+
+    <div class="modal hidden" id="confirm-modal">
+        <div class="modal_content">
+            <h2 id="modal-title">Confirmar acción</h2>
+
+            <p id="modal-message">
+                Ingresa tu contraseña para continuar.
+            </p>
+
+            <div class="form_group">
+                <label for="confirm-password">Contraseña del administrador</label>
+                <input type="password" id="confirm-password" placeholder="Ingresa tu contraseña">
+            </div>
+
+            <div class="modal_actions">
+                <button type="button" class="btn btn_ghost" id="cancel-modal-btn">
+                    Cancelar
+                </button>
+
+                <button type="button" class="btn btn_danger" id="confirm-modal-btn">
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="../JS/storage.js"></script>
     <script src="../JS/admin-users.js"></script>
 </body>
