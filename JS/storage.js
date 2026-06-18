@@ -1,4 +1,44 @@
-[
+// ==========================
+// LOCAL STORAGE KEYS
+// ==========================
+
+const USERS_KEY = "acme_users";
+const EXAMS_KEY = "acme_exams";
+const RESULTS_KEY = "acme_results";
+const SESSION_KEY = "acme_session";
+
+
+// ==========================
+// INITIAL USERS
+// ==========================
+
+const initialUsers = [
+    {
+        id: "user-001",
+        identificacion: "1001234567",
+        username: "admin",
+        password: "admin123",
+        role: "admin",
+        fullName: "Administrador Principal",
+        createdAt: "2026-06-15"
+    },
+    {
+        id: "user-002",
+        identificacion: "1007654321",
+        username: "docente",
+        password: "docente123",
+        role: "teacher",
+        fullName: "Docente de Prueba",
+        createdAt: "2026-06-15"
+    }
+];
+
+
+// ==========================
+// INITIAL EXAMS
+// ==========================
+
+const initialExams = [
     {
         "id": 1,
         "title": "Fundamentos de JavaScript",
@@ -632,4 +672,94 @@
             }
         ]
     }
-]
+];
+
+
+// ==========================
+// INITIAL RESULTS
+// ==========================
+
+const initialResults = [];
+
+
+// ==========================
+// INIT LOCAL STORAGE
+// ==========================
+
+function initLocalStorage() {
+    const users = localStorage.getItem(USERS_KEY);
+    const exams = localStorage.getItem(EXAMS_KEY);
+    const results = localStorage.getItem(RESULTS_KEY);
+
+    if (!users) {
+        localStorage.setItem(USERS_KEY, JSON.stringify(initialUsers));
+    }
+
+    if (!exams) {
+        localStorage.setItem(EXAMS_KEY, JSON.stringify(initialExams));
+    }
+
+    if (!results) {
+        localStorage.setItem(RESULTS_KEY, JSON.stringify(initialResults));
+    }
+}
+
+
+// ==========================
+// GENERAL STORAGE FUNCTIONS
+// ==========================
+
+function getData(key) {
+    const data = localStorage.getItem(key);
+
+    if (!data) {
+        return [];
+    }
+
+    return JSON.parse(data);
+}
+
+function saveData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+
+// ==========================
+// SPECIFIC GETTERS
+// ==========================
+
+function getUsers() {
+    return getData(USERS_KEY);
+}
+
+function saveUsers(users) {
+    saveData(USERS_KEY, users);
+}
+
+function getExams() {
+    console.log("entro");
+    return getData(EXAMS_KEY);
+}
+
+function saveExams(exams) {
+    saveData(EXAMS_KEY, exams);
+}
+
+function getResults() {
+    return getData(RESULTS_KEY);
+}
+
+function saveResults(results) {
+    saveData(RESULTS_KEY, results);
+}
+
+function clearSession() {
+    localStorage.removeItem(SESSION_KEY);
+}
+
+
+// ==========================
+// RUN INIT
+// ==========================
+
+initLocalStorage();

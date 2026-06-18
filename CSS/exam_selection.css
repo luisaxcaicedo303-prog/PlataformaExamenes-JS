@@ -106,17 +106,24 @@ main{
     background-color: var(--nd-color);
 }
 
+.title{
+    padding: 1rem 0;
+    margin-left: 1rem;
+}
+
 .titulo-main{
    color: var(--st-color);
    display: flex;
    justify-content: center;
    align-items: center;
    background-color: var(--rd-color);
-   width: 40%;
-   padding: 0.7rem;
+   width: 50%;
+   padding: 0.7rem 1rem;
    border-radius: 2rem;
    margin-left: 0.8rem;
+   margin: 0;
 }
+
 
 .card { 
     border: 1px solid #ccc; 
@@ -151,4 +158,141 @@ main{
     margin-left: auto;
     margin-right: 0.5rem;
 }
+
+@media (min-width: 768px) {
+
+    .header {
+        height: 25vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 1.5rem;
+        gap: 1rem;
+    }
+
+    .header-1 {
+        width: 240px;      
+        height: 85%;       
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .header-1-logo {
+        background-size: contain;
+        background-position: left center;
+    }
+
+    .header-2 {
+        flex: 1;
+        padding: 0;
+    }
+
+    .header-2-ndtitle {
+        font-size: 1.6rem;
+    }
+
+    .header-2-rdtitle {
+        font-size: 0.9rem;
+    }
+
+    .title{
+        margin-left: 2.3rem;
+    }
+
+    #cartas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        padding: 20px 30px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .titulo-main {
+        width: 40%;
+    }
+
+    .nivel {
+        width: 28%;
+    }
+}
+
+/* ========== COMPUTADOR (1024px+) ========== */
+@media (min-width: 1024px) {
+
+    .header {
+        height: auto;              
+        min-height: 120px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        gap: 1.5rem;
+    }
+
+    .header-1 {
+        width: 300px;
+        height: 80px;             
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .header-1-logo {
+        background-size: contain;
+        background-position: left center;
+    }
+
+    .header-2 {
+        flex: 1;
+        padding: 0;
+    }
+
+    .header-2-sttitle {
+        font-size: 0.85rem;
+        margin: 0 0 0.3rem;
+    }
+
+    .header-2-ndtitle {
+        font-size: 1.8rem;
+        margin: 0 0 0.3rem;
+    }
+
+    .header-2-rdtitle {
+        font-size: 0.85rem;
+        margin: 0;
+    }
+
+    main {
+        background-color: var(--nd-color);
+        min-height: calc(100vh - 120px);
+    }
+
+    #cartas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        padding: 24px 40px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .titulo-main {
+        width: 25%;
+        margin-left: 2.5rem;
+    }
+
+    .title {
+        padding: 1.2rem 0;
+        margin-left: 2rem;
+    }
+
+    .nivel {
+        width: 30%;
+    }
+}
+
 
