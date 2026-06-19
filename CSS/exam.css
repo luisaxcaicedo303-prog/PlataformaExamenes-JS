@@ -49,12 +49,14 @@ body {
   height: auto;
   display: flex;
   flex-direction: column;
-  background-color: var(--fourth-color);
+  background-color: #f0f0ef;
   padding: 1rem 1.5rem;
   position: sticky;
   top: 0;
   gap: 0.5rem;
   z-index: 10;
+  border: 1px solid var(--st-color);
+  padding-bottom: 2rem;
 }
 
 .detalles-examen {
