@@ -300,7 +300,7 @@ function renderExams() {
 
         row.innerHTML = `
             <td>
-                <span class="code">${exam.code}</span>
+                <span class="code">${exam.difficulty}</span>
             </td>
 
             <td>
@@ -374,25 +374,17 @@ function handleSaveExam(event) {
 
     const exams = getExams();
 
-    const code = examCodeInput.value.trim();
+    const difficulty = examCodeInput.value.trim();
     const title = examTitleInput.value.trim();
     const description = examDescriptionInput.value.trim();
     const time = Number(examTimeInput.value);
     const approvalPercent = Number(examPercentInput.value);
 
-    const codeExists = exams.some((exam) => {
-        return exam.code.toLowerCase() === code.toLowerCase() && exam.id !== editingExamId;
-    });
-
-    if (codeExists) {
-        alert("Ya existe un examen con ese código.");
-        return;
-    }
 
     const examData = {
         id: editingExamId || createId("exam"),
-        code: code,
         title: title,
+        difficulty: difficulty,
         description: description,
         time: time,
         approval_percent: approvalPercent,
@@ -403,7 +395,7 @@ function handleSaveExam(event) {
 
     if (editingExamId) {
         const updatedExams = exams.map((exam) => {
-            if (exam.id === editingExamId) {
+            if (exam.id == (editingExamId)) {
                 return examData;
             }
 
@@ -437,7 +429,7 @@ function deleteExam(examId) {
 
     saveExams(filteredExams);
 
-    if (editingExamId === examId) {
+    if (editingExamId == examId) {
         resetExamForm();
     }
 
@@ -448,7 +440,7 @@ function editExam(examId) {
     const exams = getExams();
 
     const examToEdit = exams.find((exam) => {
-        return exam.id === examId;
+        return exam.id == (examId);
     });
 
     if (!examToEdit) {
@@ -458,7 +450,7 @@ function editExam(examId) {
 
     editingExamId = examToEdit.id;
 
-    examCodeInput.value = examToEdit.code;
+    examCodeInput.value = examToEdit.difficulty;
     examTitleInput.value = examToEdit.title;
     examTimeInput.value = examToEdit.time;
     examPercentInput.value = examToEdit.approval_percent;
@@ -495,7 +487,7 @@ function searchExams() {
     const exams = getExams();
 
     const filteredExams = exams.filter((exam) => {
-        const code = exam.code.toLowerCase();
+        const code = exam.id.toLowerCase();
         const title = exam.title.toLowerCase();
         const description = exam.description.toLowerCase();
 

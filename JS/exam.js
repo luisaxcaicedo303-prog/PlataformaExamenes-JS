@@ -113,24 +113,22 @@ function mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo })
 
 function enviarExamen() {
     const { correctas, total, porcentajeObtenido, aprobo } = calcularResultado();
+    const initExamResult = getInitResult();
+    const resultados = getResults();
+    let resultcount = resultados.length;
+    console.log("contador:"+resultcount);
+    initExamResult.id = resultcount+1;
+    initExamResult.examId = examenSeleccionado.id;
+    initExamResult.timeUsed = "8 min";
+    initExamResult.submittedAt = new Date().toISOString();
+    initExamResult.answers = respuestasUsuario;
+    initExamResult.score = porcentajeObtenido;
+    initExamResult.approved = aprobo;
 
-    const resultado = {
-        id: `result-${Date.now()}`,
-        examId: examenSeleccionado.id,
-        studentName: "Carlos Pérez",
-        studentIdentification: "1098765432",
-        timeUsed: "32 min",
-        submittedAt: new Date().toISOString(),
-        answers: respuestasUsuario,
-        score: porcentajeObtenido,
-        approved: aprobo
-    };
+    resultados.push(initExamResult);
+    saveResults(resultados);
 
-    const resultados = JSON.parse(localStorage.getItem('resultados')) || [];
-    resultados.push(resultado);
-    localStorage.setItem('resultados', JSON.stringify(resultados));
-
-    console.log("Resultado guardado:", resultado);
+    console.log("Resultado guardado:", initExamResult);
 
     mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo });
 };

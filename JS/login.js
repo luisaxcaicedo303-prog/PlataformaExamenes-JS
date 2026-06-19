@@ -1,3 +1,9 @@
+const btnResolver = document.getElementById("btn_resolt_exam");
+
+btnResolver.addEventListener("click",()=>{
+    window.location.href = "exam_selection.html";
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('iniciar-Sesion');
 

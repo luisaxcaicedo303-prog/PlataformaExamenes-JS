@@ -4,6 +4,7 @@
 
 const USERS_KEY = "acme_users";
 const EXAMS_KEY = "acme_exams";
+const INIT_EXAM_RESULT = "initial_exam_result";
 const RESULTS_KEY = "acme_results";
 const SESSION_KEY = "acme_session";
 const EXAM_SELECTION = "exam_selection";
@@ -18,19 +19,27 @@ const initialUsers = [
         id: "user-001",
         identificacion: "1001234567",
         username: "admin",
+        email: "admin@acmeexam.com",
+        telefono: "3001234567",
         password: "admin123",
         role: "admin",
-        fullName: "Administrador Principal",
-        createdAt: "2026-06-15"
+        seguridad: {
+            idPregunta: "1",
+            respuesta: "firulais"
+        },
     },
     {
         id: "user-002",
         identificacion: "1007654321",
         username: "docente",
+        email: "docente@acmeexam.com",
+        telefono: "3017654321",
         password: "docente123",
         role: "teacher",
-        fullName: "Docente de Prueba",
-        createdAt: "2026-06-15"
+        seguridad: {
+            idPregunta: "4",
+            respuesta: "pizza"
+        },
     }
 ];
 
@@ -681,12 +690,60 @@ const initialExams = [
     }
 ];
 
+// ==========================
+// INITIAL EXAM RESULT
+// ==========================
 
+const initialExamResult = {
+        id: 0,
+        examId: 0,
+        studentName: "",
+        studentIdentification: "",
+        timeUsed: "",
+        submittedAt: "",
+        answers: [
+        ],
+        score: 0,
+        approved: false
+    };
 // ==========================
 // INITIAL RESULTS
 // ==========================
 
-const initialResults = [];
+const initialResults = [
+    {
+        id: "result-001",
+        examId: 1,
+        studentName: "Carlos Pérez",
+        studentIdentification: "1098765432",
+        timeUsed: "32 min",
+        submittedAt: "2026-06-18T10:30:00",
+        answers: [
+            { questionIndex: 0, selected_answer: 1 },
+            { questionIndex: 1, selected_answer: 2 },
+            { questionIndex: 2, selected_answer: 1 },
+            { questionIndex: 3, selected_answer: 2 },
+            { questionIndex: 4, selected_answer: 0 },
+            { questionIndex: 5, selected_answer: 1 },
+            { questionIndex: 6, selected_answer: 2 },
+            { questionIndex: 7, selected_answer: 0 },
+            { questionIndex: 8, selected_answer: 3 },
+            { questionIndex: 9, selected_answer: 1 },
+            { questionIndex: 10, selected_answer: 3 },
+            { questionIndex: 11, selected_answer: 1 },
+            { questionIndex: 12, selected_answer: 2 },
+            { questionIndex: 13, selected_answer: 0 },
+            { questionIndex: 14, selected_answer: 0 },
+            { questionIndex: 15, selected_answer: 1 },
+            { questionIndex: 16, selected_answer: 0 },
+            { questionIndex: 17, selected_answer: 2 },
+            { questionIndex: 18, selected_answer: 1 },
+            { questionIndex: 19, selected_answer: 2 }
+        ],
+        score: 70,
+        approved: true
+    }
+];
 
 
 // ==========================
@@ -696,6 +753,7 @@ const initialResults = [];
 function initLocalStorage() {
     const users = localStorage.getItem(USERS_KEY);
     const exams = localStorage.getItem(EXAMS_KEY);
+    const initExam = localStorage.getItem(INIT_EXAM_RESULT);
     const results = localStorage.getItem(RESULTS_KEY);
     const examSelection = localStorage.getItem(EXAM_SELECTION);
 
@@ -705,6 +763,10 @@ function initLocalStorage() {
 
     if (!exams) {
         localStorage.setItem(EXAMS_KEY, JSON.stringify(initialExams));
+    }
+
+    if (!initExam) {
+        localStorage.setItem(INIT_EXAM_RESULT, JSON.stringify(initialExamResult));
     }
 
     if (!results) {
@@ -765,12 +827,29 @@ function saveExamSelection(exam) {
     saveData(EXAM_SELECTION, exam);
 }
 
+function getInitResult() {
+    return getData(INIT_EXAM_RESULT);
+}
+
+function saveInitResult(result) {
+    saveData(INIT_EXAM_RESULT, result);
+}
+
+
 function getResults() {
     return getData(RESULTS_KEY);
 }
 
 function saveResults(results) {
     saveData(RESULTS_KEY, results);
+}
+
+function saveSession(session) {
+    saveData(SESSION_KEY,session);
+}
+
+function getSession() {
+    return getData(SESSION_KEY);
 }
 
 function clearSession() {
