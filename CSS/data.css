@@ -164,11 +164,7 @@ body {
   justify-content: center;
 }
 
-.btn-volver:hover {
-  color: #111;
-}
-
-.btn-iniciar{
+#btn-iniciar{
   background: var(--rd-color);
   color: #fff;
   border: none;
@@ -180,12 +176,12 @@ body {
   transition: background 0.15s;
 }
 
-.btn-iniciar a{
+#btn-iniciar a{
   text-decoration: none;
   color: var(--st-color);
 }
 
-.btn-iniciar:hover {
+#btn-iniciar:hover {
   background: var(--fourth-color);
 }
 
@@ -271,7 +267,7 @@ body {
     width: 50%;
     padding: 44px 52px;
     border-radius: 16px;
-    height: 60vh;
+    height: 70vh;
   }
 
   .card-title {

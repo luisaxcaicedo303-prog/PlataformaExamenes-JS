@@ -24,11 +24,6 @@ const intervalo = setInterval(() => {
     }
 },1000)
 
-
-
-
-
-
 // Array que va guardando las respuestas del usuario
 const respuestasUsuario = examenSeleccionado.questions.map((_, index) => ({
     questionIndex: index,
@@ -72,28 +67,83 @@ examenSeleccionado.questions.forEach((questions, index) => {
     document.querySelector('.pregunta-contenedor').appendChild(nuevaPregunta);
 });
 
+function calcularResultado() {
+    let correctas = 0;
+
+    examenSeleccionado.questions.forEach((pregunta, index) => {
+        const respuestaCorrecta = pregunta.correct_answer; // ajusta el nombre según tu estructura de datos
+        if (respuestasUsuario[index].selected_answer === respuestaCorrecta) {
+            correctas++;
+        }
+    });
+
+    const total = examenSeleccionado.questions.length;
+    const porcentajeObtenido = Math.round((correctas / total) * 100);
+    const aprobo = porcentajeObtenido >= examenSeleccionado.approval_percent;
+
+    return { correctas, total, porcentajeObtenido, aprobo };
+}
+
+function mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo }) {
+    const overlay = document.getElementById('modalOverlay');
+    const modal = document.getElementById('modalResultado');
+    const icono = document.getElementById('modalIcono');
+    const titulo = document.getElementById('modalTitulo');
+    const texto = document.getElementById('modalTexto');
+    const puntaje = document.getElementById('modalPuntaje');
+
+    modal.classList.remove('aprobado', 'reprobado');
+
+    if (aprobo) {
+        modal.classList.add('aprobado');
+        icono.textContent = '✅';
+        titulo.textContent = '¡Felicidades, aprobaste!';
+        texto.textContent = 'Has alcanzado el porcentaje mínimo requerido.';
+    } else {
+        modal.classList.add('reprobado');
+        icono.textContent = '❌';
+        titulo.textContent = 'No aprobaste';
+        texto.textContent = 'No alcanzaste el porcentaje mínimo requerido.';
+    }
+
+    puntaje.textContent = `${correctas}/${total} correctas — ${porcentajeObtenido}%`;
+
+    overlay.classList.add('activo');
+}
+
 function enviarExamen() {
+    const { correctas, total, porcentajeObtenido, aprobo } = calcularResultado();
+
     const resultado = {
         id: `result-${Date.now()}`,
         examId: examenSeleccionado.id,
-        studentName: "Carlos Pérez",       // esto vendrá de tu login/localStorage
-        studentIdentification: "1098765432", // igual
-        timeUsed: "32 min",                 // vendrá del cronómetro
+        studentName: "Carlos Pérez",
+        studentIdentification: "1098765432",
+        timeUsed: "32 min",
         submittedAt: new Date().toISOString(),
-        answers: respuestasUsuario
+        answers: respuestasUsuario,
+        score: porcentajeObtenido,
+        approved: aprobo
     };
 
-    // Guardar en localStorage
     const resultados = JSON.parse(localStorage.getItem('resultados')) || [];
     resultados.push(resultado);
     localStorage.setItem('resultados', JSON.stringify(resultados));
-    
+
     console.log("Resultado guardado:", resultado);
+
+    mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo });
 }
 
-const botonEnviar =document.getElementById("boton");
+const botonEnviar = document.getElementById("boton");
+const modalCerrar = document.getElementById("modalCerrar");
+const modalOverlay = document.getElementById("modalOverlay");
 
-botonEnviar.addEventListener("click",()=>{
-    
+botonEnviar.addEventListener("click", () => {
     enviarExamen();
-})
+});
+
+modalCerrar.addEventListener("click", () => {
+    modalOverlay.classList.remove('activo');
+    window.location.href = "/HTML/exam_selection.html";
+});
