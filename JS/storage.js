@@ -56,7 +56,8 @@ const initialExamSelection = "";
 
 const initialExams = [
     {
-        "id": 1,
+        "id": "exam-001",
+        "code": "JS-101",
         "title": "Fundamentos de JavaScript",
         "description": "Evalúa conocimientos básicos sobre variables, tipos de datos, funciones, arreglos, objetos y estructuras de control en JavaScript.",
         "time": 10,
@@ -267,7 +268,8 @@ const initialExams = [
         ]
     },
     {
-        "id": 2,
+        "id": "exam-002",
+        "code": "PY-102",
         "title": "Fundamentos de Python",
         "description": "Evalúa conocimientos básicos sobre sintaxis, variables, tipos de datos, estructuras de control, funciones y colecciones en Python.",
         "time": 10,
@@ -478,7 +480,8 @@ const initialExams = [
         ]
     },
     {
-        "id": 3,
+        "id": "exam-003",
+        "code": "HTML-103",
         "title": "Fundamentos de HTML",
         "description": "Evalúa conocimientos básicos sobre la estructura de documentos HTML, etiquetas semánticas, formularios, enlaces, imágenes y buenas prácticas de desarrollo web.",
         "time": 10,

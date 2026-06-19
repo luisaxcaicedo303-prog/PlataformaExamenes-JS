@@ -5,6 +5,7 @@ const examTitleInput = document.getElementById("exam-title");
 
 const examTimeInput = document.getElementById("exam-time");
 const examPercentInput = document.getElementById("exam-percent");
+const examDifficulty = document.getElementById("exam-difficulty");
 const examDescriptionInput = document.getElementById("exam-description");
 
 const addQuestionBtn = document.getElementById("add-question-btn");
@@ -278,7 +279,6 @@ function resetExamForm() {
 }
 
 function renderExams() {
-    console.log("entro 2");
     const examsToRender = getExams();
     examsTableBody.innerHTML = "";
 
@@ -300,7 +300,7 @@ function renderExams() {
 
         row.innerHTML = `
             <td>
-                <span class="code">${exam.difficulty}</span>
+                <span class="code">${exam.code}</span>
             </td>
 
             <td>
@@ -352,7 +352,7 @@ function renderExamsSession(){
     const session = getSession();
 
     if (!session) {
-        window.location.href = "login.html";
+        window.location.href = "../index.html";
         return;
     }
 
@@ -374,17 +374,27 @@ function handleSaveExam(event) {
 
     const exams = getExams();
 
-    const difficulty = examCodeInput.value.trim();
+    const code = examCodeInput.value.trim();
     const title = examTitleInput.value.trim();
     const description = examDescriptionInput.value.trim();
     const time = Number(examTimeInput.value);
     const approvalPercent = Number(examPercentInput.value);
+    const difficult = examDifficulty.value;
 
+    const codeExists = exams.some((exam) => {
+        return exam.code.toLowerCase() === code.toLowerCase() && exam.id !== editingExamId;
+    });
+
+    if (codeExists) {
+        alert("Ya existe un examen con ese código.");
+        return;
+    }
 
     const examData = {
         id: editingExamId || createId("exam"),
+        code: code,
+        difficulty: difficult,
         title: title,
-        difficulty: difficulty,
         description: description,
         time: time,
         approval_percent: approvalPercent,
@@ -395,7 +405,7 @@ function handleSaveExam(event) {
 
     if (editingExamId) {
         const updatedExams = exams.map((exam) => {
-            if (exam.id == (editingExamId)) {
+            if (exam.id === editingExamId) {
                 return examData;
             }
 
@@ -429,7 +439,7 @@ function deleteExam(examId) {
 
     saveExams(filteredExams);
 
-    if (editingExamId == examId) {
+    if (editingExamId === examId) {
         resetExamForm();
     }
 
@@ -440,7 +450,7 @@ function editExam(examId) {
     const exams = getExams();
 
     const examToEdit = exams.find((exam) => {
-        return exam.id == (examId);
+        return exam.id === examId;
     });
 
     if (!examToEdit) {
@@ -450,10 +460,11 @@ function editExam(examId) {
 
     editingExamId = examToEdit.id;
 
-    examCodeInput.value = examToEdit.difficulty;
+    examCodeInput.value = examToEdit.code;
     examTitleInput.value = examToEdit.title;
     examTimeInput.value = examToEdit.time;
     examPercentInput.value = examToEdit.approval_percent;
+    examDifficulty.value = examToEdit.difficulty;
     examDescriptionInput.value = examToEdit.description;
 
     questionsContainer.innerHTML = "";
@@ -487,7 +498,7 @@ function searchExams() {
     const exams = getExams();
 
     const filteredExams = exams.filter((exam) => {
-        const code = exam.id.toLowerCase();
+        const code = exam.code.toLowerCase();
         const title = exam.title.toLowerCase();
         const description = exam.description.toLowerCase();
 
@@ -509,7 +520,7 @@ function handleLogout() {
     }
 
     clearSession();
-    window.location.href = "login.html";
+    window.location.href = "../index.html";
 }
 
 // INIT PAGE
