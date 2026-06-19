@@ -1,4 +1,4 @@
-const examenSeleccionado = JSON.parse(localStorage.getItem("EXAMS_KEY"))
+const examenSeleccionado = getExamSelection();
 
 const detallesExamen =document.querySelector(".detalles-examen");
 const titleExamen=document.querySelector(".title-examen");
@@ -22,7 +22,7 @@ const intervalo = setInterval(() => {
         clearInterval(intervalo);
         cronometro.textContent = '¡Tiempo cumplido!';
     }
-},1000)
+},1000);
 
 // Array que va guardando las respuestas del usuario
 const respuestasUsuario = examenSeleccionado.questions.map((_, index) => ({
@@ -42,7 +42,7 @@ examenSeleccionado.questions.forEach((questions, index) => {
 
     // Luego agrega cada opción con textContent para evitar que interprete el HTML
     const contenedorRespuestas = nuevaPregunta.querySelector('.respuestas');
-    
+    console.log("ques"+examenSeleccionado);
     questions.options.forEach((opcion, i) => {
         const label = document.createElement('label');
         const input = document.createElement('input');
@@ -82,7 +82,7 @@ function calcularResultado() {
     const aprobo = porcentajeObtenido >= examenSeleccionado.approval_percent;
 
     return { correctas, total, porcentajeObtenido, aprobo };
-}
+};
 
 function mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo }) {
     const overlay = document.getElementById('modalOverlay');
@@ -109,7 +109,7 @@ function mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo })
     puntaje.textContent = `${correctas}/${total} correctas — ${porcentajeObtenido}%`;
 
     overlay.classList.add('activo');
-}
+};
 
 function enviarExamen() {
     const { correctas, total, porcentajeObtenido, aprobo } = calcularResultado();
@@ -133,7 +133,7 @@ function enviarExamen() {
     console.log("Resultado guardado:", resultado);
 
     mostrarModalResultado({ correctas, total, porcentajeObtenido, aprobo });
-}
+};
 
 const botonEnviar = document.getElementById("boton");
 const modalCerrar = document.getElementById("modalCerrar");

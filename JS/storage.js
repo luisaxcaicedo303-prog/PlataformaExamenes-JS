@@ -6,6 +6,7 @@ const USERS_KEY = "acme_users";
 const EXAMS_KEY = "acme_exams";
 const RESULTS_KEY = "acme_results";
 const SESSION_KEY = "acme_session";
+const EXAM_SELECTION = "exam_selection";
 
 
 // ==========================
@@ -32,6 +33,12 @@ const initialUsers = [
         createdAt: "2026-06-15"
     }
 ];
+
+// ==========================
+// INITIAL EXAM SELECTION
+// ==========================
+
+const initialExamSelection = "";
 
 
 // ==========================
@@ -690,6 +697,7 @@ function initLocalStorage() {
     const users = localStorage.getItem(USERS_KEY);
     const exams = localStorage.getItem(EXAMS_KEY);
     const results = localStorage.getItem(RESULTS_KEY);
+    const examSelection = localStorage.getItem(EXAM_SELECTION);
 
     if (!users) {
         localStorage.setItem(USERS_KEY, JSON.stringify(initialUsers));
@@ -701,6 +709,10 @@ function initLocalStorage() {
 
     if (!results) {
         localStorage.setItem(RESULTS_KEY, JSON.stringify(initialResults));
+    }
+
+    if(!examSelection){
+        localStorage.setItem(EXAM_SELECTION, JSON.stringify(initialExamSelection));
     }
 }
 
@@ -743,6 +755,14 @@ function getExams() {
 
 function saveExams(exams) {
     saveData(EXAMS_KEY, exams);
+}
+
+function getExamSelection() {
+    return getData(EXAM_SELECTION);
+}
+
+function saveExamSelection(exam) {
+    saveData(EXAM_SELECTION, exam);
 }
 
 function getResults() {

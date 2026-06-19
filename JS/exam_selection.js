@@ -9,7 +9,7 @@ function cargarExamenes() {
         card.style.cursor="pointer"
 
           card.addEventListener("click", () => {
-            localStorage.setItem("EXAMS_KEY", JSON.stringify(examen))
+            saveExamSelection(examen);
             window.location.href = "/HTML/data.html"
         }) 
 

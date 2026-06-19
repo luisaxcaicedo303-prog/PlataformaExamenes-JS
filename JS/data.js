@@ -1,4 +1,4 @@
-const examenSeleccionado = JSON.parse(localStorage.getItem("EXAMS_KEY"))
+const examenSeleccionado = getExamSelection()
 
 if (examenSeleccionado) {
     document.querySelector("#title").textContent = examenSeleccionado.title
