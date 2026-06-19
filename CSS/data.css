@@ -241,7 +241,7 @@ body {
 @media (min-width: 1024px) {
 .header {
     height: 120px;
-    overflow: hidden;       /* corta cualquier desborde */
+    overflow: hidden;       
   }
 
   .header-1 {
@@ -251,8 +251,8 @@ body {
   }
 
   .header-1-logo {
-    background-size: contain;           /* no recorta el logo */
-    background-position: center;   /* alineado a la izquierda */
+    background-size: contain;           
+    background-position: center;   
   }
 
   .main {

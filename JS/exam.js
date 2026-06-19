@@ -71,7 +71,7 @@ function calcularResultado() {
     let correctas = 0;
 
     examenSeleccionado.questions.forEach((pregunta, index) => {
-        const respuestaCorrecta = pregunta.correct_answer; // ajusta el nombre según tu estructura de datos
+        const respuestaCorrecta = pregunta.correct_answer; // ajusta el nombre según estructura de datos
         if (respuestasUsuario[index].selected_answer === respuestaCorrecta) {
             correctas++;
         }

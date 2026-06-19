@@ -1,5 +1,3 @@
-
-
 function cargarExamenes() {
     const examenes = getExams();
     console.log(examenes);
