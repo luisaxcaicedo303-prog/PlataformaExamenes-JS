@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examen</title>
+  <link rel="stylesheet" href="/CSS/exam.css" />
+</head>
+<body>
+  <header class="header"> 
+        <div class="header-1">
+            <a href=""> <!-- Esto te permitira volver a login dandole click a la imagen -->
+                <div class="header-1-logo"></div>
+            </a>
+        </div>
+  </header>
+
+
+    <div class="contenedorDetalles">
+      <div class="detalles-examen">
+        <h1 class="title-examen"></h1>
+        <span class="numeroPreguntas"></span>
+        <span class="porcentaje"></span>
+      </div>
+      <div class="cronometro"><p>0</p></div>
+    </div>
+  <main class="main">
+
+    <div class="pregunta-contenedor">
+    
+    </div>
+
+    <div class="alert">
+      <button id="boton">Enviar</button>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-resultado" id="modalResultado">
+        <div class="modal-icono" id="modalIcono"></div>
+        <h2 class="modal-titulo" id="modalTitulo"></h2>
+        <p class="modal-texto" id="modalTexto"></p>
+        <div class="modal-detalle">
+          <span id="modalPuntaje"></span>
+        </div>
+        <button class="modal-boton" id="modalCerrar">Aceptar</button>
+      </div>
+    </div>
+
+  </main>
+  <script src="/JS/storage.js"></script>
+  <script src="/JS/exam.js"></script>
+</body>
+</html>

@@ -3,7 +3,9 @@
         "id": 1,
         "title": "Fundamentos de JavaScript",
         "description": "Evalúa conocimientos básicos sobre variables, tipos de datos, funciones, arreglos, objetos y estructuras de control en JavaScript.",
-        "time": 45,
+        "time": 10,
+        "num_questions": "20",
+        "difficulty": "Básico",
         "approval_percent": 70,
         "questions": [
             {
@@ -212,7 +214,9 @@
         "id": 2,
         "title": "Fundamentos de Python",
         "description": "Evalúa conocimientos básicos sobre sintaxis, variables, tipos de datos, estructuras de control, funciones y colecciones en Python.",
-        "time": 45,
+        "time": 10,
+        "num_questions": "20",
+        "difficulty": "Intermedio",
         "approval_percent": 70,
         "questions": [
             {
@@ -421,7 +425,9 @@
         "id": 3,
         "title": "Fundamentos de HTML",
         "description": "Evalúa conocimientos básicos sobre la estructura de documentos HTML, etiquetas semánticas, formularios, enlaces, imágenes y buenas prácticas de desarrollo web.",
-        "time": 45,
+        "time": 10,
+        "num_questions": "20",
+        "difficulty": "Avanzado",
         "approval_percent": 70,
         "questions": [
             {

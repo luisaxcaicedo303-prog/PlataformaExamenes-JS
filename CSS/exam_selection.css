@@ -1,0 +1,297 @@
+:root{
+    --st-color: #000022;
+    --nd-color: #f3fffb;
+    --rd-color: #007fff;
+    --fourth-color: #5aa9e6;
+    --fifth-color: #6f686d;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    height: 30vh;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+    background-color: var(--st-color);
+}
+
+.header-1{
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header-1-logo{
+    background-image: url(/assets/ChatGPT\ Image\ 12\ jun\ 2026,\ 03_25_19\ p.m..png);
+    background-position: center;
+    background-size: cover;
+    background-repeat:no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.header-1 a {
+    display: block;
+    height: 100%;
+}
+
+a{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ti-clipboard-check{
+    background-color: var(--rd-color);
+    color: var(--nd-color);
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+}
+
+.header-1-titulo{
+    color: var(--nd-color);
+    font-size: 1rem;
+}
+
+.header-2{
+    padding: 0.5rem;
+}
+
+.header-2-sttitle{
+    color: var(--rd-color)
+}
+
+.header-2-ndtitle{
+    color: var(--nd-color);
+}
+
+.titulo-icono{
+    display: flex;
+    gap: 0.4rem;
+}
+
+.header-2-rdtitle{
+    color: var(--fifth-color);
+    margin: 0;
+}
+
+.header-2-ndtitle{
+    font-size: 1.4rem;
+}
+
+strong{
+    color: var(--rd-color);
+}
+
+.ti-info-circle{
+    color: var(--rd-color);
+}
+
+.header-2-rdtitle{
+    font-size: 0.8rem;
+}
+
+/*////////////////////////////////////////////////////////////////////////   MAIN   ///////////////////////////////////////////////////////////////////////*/
+
+main{
+    background-color: var(--nd-color);
+}
+
+.title{
+    padding: 1rem 0;
+    margin-left: 1rem;
+}
+
+.titulo-main{
+   color: var(--st-color);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--rd-color);
+   width: 50%;
+   padding: 0.7rem 1rem;
+   border-radius: 2rem;
+   margin-left: 0.8rem;
+   margin: 0;
+}
+
+
+.card { 
+    border: 1px solid #ccc; 
+    padding: 15px; 
+    border-radius: 3rem;                        /*contededor de examenes*/
+    width: 350px; 
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; 
+}
+
+.card:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); 
+}
+
+#cartas { 
+    display: flex; 
+    gap: 1rem; 
+    flex-wrap: wrap; 
+    padding: 20px;
+}
+
+.nivel{
+    display: flex;
+    justify-content: center     ;
+    align-items: center;
+    background-color: var(--fourth-color);
+    width: 34%;
+    border-radius: 1rem;
+    margin-left: auto;
+    margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+
+    .header {
+        height: 25vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 1.5rem;
+        gap: 1rem;
+    }
+
+    .header-1 {
+        width: 240px;      
+        height: 85%;       
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .header-1-logo {
+        background-size: contain;
+        background-position: left center;
+    }
+
+    .header-2 {
+        flex: 1;
+        padding: 0;
+    }
+
+    .header-2-ndtitle {
+        font-size: 1.6rem;
+    }
+
+    .header-2-rdtitle {
+        font-size: 0.9rem;
+    }
+
+    .title{
+        margin-left: 2.3rem;
+    }
+
+    #cartas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        padding: 20px 30px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .titulo-main {
+        width: 40%;
+    }
+
+    .nivel {
+        width: 28%;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .header {
+        height: auto;              
+        min-height: 120px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        gap: 1.5rem;
+    }
+
+    .header-1 {
+        width: 300px;
+        height: 80px;             
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .header-1-logo {
+        background-size: contain;
+        background-position: left center;
+    }
+
+    .header-2 {
+        flex: 1;
+        padding: 0;
+    }
+
+    .header-2-sttitle {
+        font-size: 0.85rem;
+        margin: 0 0 0.3rem;
+    }
+
+    .header-2-ndtitle {
+        font-size: 1.8rem;
+        margin: 0 0 0.3rem;
+    }
+
+    .header-2-rdtitle {
+        font-size: 0.85rem;
+        margin: 0;
+    }
+
+    main {
+        background-color: var(--nd-color);
+        min-height: calc(100vh - 120px);
+    }
+
+    #cartas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        padding: 24px 40px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .titulo-main {
+        width: 15%;
+        margin-left: 2.5rem;
+    }
+
+    .title {
+        padding: 1.2rem 0;
+        margin-left: 2rem;
+    }
+
+    .nivel {
+        width: 30%;
+    }
+}
+
+

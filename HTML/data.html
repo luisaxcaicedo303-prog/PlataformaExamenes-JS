@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resolver examen</title>
+  <link rel="stylesheet" href="/CSS/data.css" />
+</head>
+<body>
+  <header class="header"> 
+      <div class="header-1">
+          <a href="">
+            <div class="header-1-logo"></div>
+          </a>
+      </div>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <span class="card-code"></span>
+      <h1 class="title" id="title"></h1>
+      <p class="card-desc">Antes de iniciar, registra los datos que quedarán asociados a tus respuestas.</p>
+
+      <div class="form-group">
+        <label for="identificacion">Numero de identificacion</label>
+        <input type="number" id="identificacion" placeholder="" />
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" placeholder="" />
+        <p id="error"></p>
+      </div>
+
+      <div class="form-actions">
+        <button id="btn-iniciar">Iniciar examen</button>
+      </div>
+    </div>
+  </main>
+
+
+  <script src="/JS/storage.js"></script>
+  <script src="/JS/data.js"></script>
+</body>
+</html>
